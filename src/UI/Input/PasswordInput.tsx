@@ -36,7 +36,8 @@ const PasswordInput: React.FC<{data: string, setter: any, label: string}> = ({da
                 {label}
             </label>
             <br/>
-            <input 
+            <input
+                style={{paddingRight: paddingRightForPassword}} 
                 onSelect={event => event.preventDefault()} 
                 className={`${styles.inputField}`} 
                 value={data} 

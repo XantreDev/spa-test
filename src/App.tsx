@@ -1,15 +1,42 @@
-import React from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './components/Login/Login';
 import './App.scss';
+import { AuthService } from './components/Login/AuthService';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from './state/store';
+import Nav from './components/Nav/Nav';
+import { bindActionCreators } from '@reduxjs/toolkit';
+import { AC } from './state';
 
 function App() {
-  return (
+    const userToken = useSelector((state: RootState) => state.userToken)
+    const dispatch = useDispatch()
+    const { getAuth } = bindActionCreators(AC, dispatch)
+
+    useLayoutEffect(() => {
+        if (AuthService.checkAuth()) {
+            AuthService.authInState(getAuth)
+        }
+    } ,[])
+
+    const needToLogin = userToken === '' ? true : false
+
+    return (
     <div className="App">
         <BrowserRouter>
-            <Routes>
-                <Route path='/' element={<Login/>}/>
-            </Routes>
+                {
+                    needToLogin ?
+                    <Routes>
+                        <Route path='/' element={<Login/>}/>
+                    </Routes>
+                    : 
+                    (<Routes>
+                        <Route path='/' element={<Nav/>}>
+                        </Route>
+                    </Routes>
+                    )
+                }
         </BrowserRouter>
     </div>
   );
