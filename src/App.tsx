@@ -5,9 +5,11 @@ import './App.scss';
 import { AuthService } from './components/Login/AuthService';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './state/store';
-import Nav from './components/Nav/Nav';
+import Header from './components/Nav/Nav';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import { AC } from './state';
+
+export const ROUTES = {index: '/', search: '/', favorite: '/favorite'}
 
 function App() {
     const userToken = useSelector((state: RootState) => state.userToken)
@@ -32,7 +34,7 @@ function App() {
                     </Routes>
                     : 
                     (<Routes>
-                        <Route path='/' element={<Nav/>}>
+                        <Route path='/' element={<Header/>}>
                         </Route>
                     </Routes>
                     )

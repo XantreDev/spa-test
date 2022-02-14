@@ -1,9 +1,17 @@
 import React from 'react'
+import styles from './Nav.module.scss'
+import Navigation from './Navigation/Navigation';
+import Exit from './Exit/Exit';
 
-const Nav = () => {
+const Header = () => {
   return (
-    <div>Nav</div>
+    <header className={styles.header}>
+        <div className={styles.container}>
+            <Navigation/>
+            <Exit/>
+        </div>
+    </header>
   )
 }
 
-export default Nav
+export default Header

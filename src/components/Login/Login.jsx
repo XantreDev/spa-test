@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "@reduxjs/toolkit";
 import { AC } from "../../state";
 import { AuthService } from "./AuthService";
+import Logo from '../../UI/Logo/Logo';
 
 const Login = () => {
     const [login, setLogin] = useState("");
@@ -24,7 +25,7 @@ const Login = () => {
     return (
         <div>
             <CardWrapper gap="2rem" paddingBottom="6rem" paddingTop="4rem">
-                <img className={styles.logo} src={logo} alt="logo" />
+                <Logo/>
 
                 <div className={styles.header}>
                     <b>Вход</b>

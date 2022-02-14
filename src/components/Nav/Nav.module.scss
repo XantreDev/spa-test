@@ -1,0 +1,25 @@
+.header{
+    height: 8rem;
+    width: 100%;
+    background-color: #FFF;
+    border: 0 0 0.2rem 0 solid #F1F1F1 ;
+
+    .container {
+        margin: 0 auto;
+        padding-right: 2rem;
+        display: flex; 
+        flex-direction: row;
+        justify-content: space-between;
+
+        width: calc(1040 / 1440 * 100%);
+        height: 100%;
+
+        @media screen and (max-width: 80rem) {
+            width: calc(688 / 768 * 100%);
+        }
+
+        @media screen and (max-width: 40rem) {
+            width: 100%; 
+        }
+    }
+}
