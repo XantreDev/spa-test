@@ -1,5 +1,5 @@
 import React, {useState}  from 'react'
-import styles from './Input.module.scss'
+import styles from './PasswordInput.module.scss'
 
 import showPasswordDissabled from './svg/show_password.svg'
 import showPasswordActive from './svg/show_password_active.svg'
@@ -31,7 +31,7 @@ const PasswordInput: React.FC<{data: string, setter: any, label: string}> = ({da
 
     return (
         
-        <div className={styles.input}>
+        <div className={styles.loginInput}>
             <label htmlFor={label}>
                 {label}
             </label>

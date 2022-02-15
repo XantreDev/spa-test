@@ -1,0 +1,14 @@
+.loginInput{
+    position: relative;
+    width: 33.4rem;
+
+    @media screen and (max-width: 500px) {
+        width: 93.4%;
+    }
+    // overflow: hidden;
+    label {
+        font-size: 1.6rem;
+        font-weight: 400;
+        color: rgba($color: #171719, $alpha: .3);
+    }
+}

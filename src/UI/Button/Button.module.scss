@@ -1,0 +1,6 @@
+@import './ButtonGenerics.scss';
+
+.button {
+    @include button;
+    font-size: 2rem;
+}

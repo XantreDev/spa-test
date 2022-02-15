@@ -1,12 +1,13 @@
 import React from 'react'
 
-const Logo: React.FC<{size: string}> = ({size = '8.8rem'}) => {
+const Logo: React.FC<{size: string, className?: string}> = ({size = '8.8rem', className=''}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
       fill="none"
+      className={className}
       viewBox="0 0 88 88"
     >
       <path

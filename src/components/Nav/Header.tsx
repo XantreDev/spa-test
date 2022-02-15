@@ -1,15 +1,16 @@
 import React from 'react'
-import styles from './Nav.module.scss'
+import styles from './Header.module.scss'
 import Navigation from './Navigation/Navigation';
 import Exit from './Exit/Exit';
+import Container from '../../UI/Container/Container';
 
 const Header = () => {
   return (
     <header className={styles.header}>
-        <div className={styles.container}>
+        <Container className={styles.align}>
             <Navigation/>
             <Exit/>
-        </div>
+        </Container>
     </header>
   )
 }

@@ -2,43 +2,46 @@ import React, { useEffect, useLayoutEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './components/Login/Login';
 import './App.scss';
-import { AuthService } from './components/Login/AuthService';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from './state/store';
-import Header from './components/Nav/Nav';
-import { bindActionCreators } from '@reduxjs/toolkit';
-import { AC } from './state';
+import Header from './components/Nav/Header';
+import Favorite from './components/Favorite/Favorite';
+import Search from './components/Search/Search';
+import Results from './components/Results/Results';
+import useAuth from './hooks/useAuth';
 
 export const ROUTES = {index: '/', search: '/', favorite: '/favorite'}
 
 function App() {
-    const userToken = useSelector((state: RootState) => state.userToken)
-    const dispatch = useDispatch()
-    const { getAuth } = bindActionCreators(AC, dispatch)
+    const needToLogin = useAuth()
 
-    useLayoutEffect(() => {
-        if (AuthService.checkAuth()) {
-            AuthService.authInState(getAuth)
-        }
-    } ,[])
-
-    const needToLogin = userToken === '' ? true : false
+    const canShow = useSelector((state: RootState) => state.searchState.canShow)
 
     return (
     <div className="App">
         <BrowserRouter>
-                {
-                    needToLogin ?
-                    <Routes>
-                        <Route path='/' element={<Login/>}/>
-                    </Routes>
-                    : 
-                    (<Routes>
-                        <Route path='/' element={<Header/>}>
-                        </Route>
-                    </Routes>
-                    )
-                }
+            {
+                needToLogin ?
+                <Routes>
+                    <Route path='' element={<Login/>}/>
+                </Routes>
+                : 
+                (<Routes>
+                    <Route path='/' element={
+                        <React.Fragment>
+                            <Header/>
+                            { canShow ? <Results/> : <Search/> }
+                        </React.Fragment>
+                        }/>
+                    <Route path={ROUTES.favorite} element={
+                        <React.Fragment>
+                            <Header/>
+                            <Favorite/>
+                        </React.Fragment>
+                    }/>
+                </Routes>
+                )
+            }
         </BrowserRouter>
     </div>
   );

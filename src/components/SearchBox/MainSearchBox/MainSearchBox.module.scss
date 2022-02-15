@@ -1,0 +1,25 @@
+@import './../SearchBox.scss';
+
+.searchContainer{
+    display: flex;
+
+    .searchBox {
+        @include input;
+        
+        width: 53.6rem;
+        padding-right: 5rem;
+
+        @media screen and (max-width: 767px) {
+            width: 100%;
+        }
+
+        @media screen and (max-width: 500px) {
+            padding-right: 1.5rem;
+        }
+    }
+
+    
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
+}

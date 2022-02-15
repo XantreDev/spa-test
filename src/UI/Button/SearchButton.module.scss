@@ -1,0 +1,19 @@
+@import './ButtonGenerics.scss';
+
+.button {
+    @include button;
+    font-size: 2rem;
+     
+
+    div {
+        width: 11rem;
+
+        @media screen and (max-width: 600px) {
+            width: 5.1rem;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        font-size: 1.6rem;
+    }
+}

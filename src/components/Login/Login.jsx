@@ -10,6 +10,7 @@ import { bindActionCreators } from "@reduxjs/toolkit";
 import { AC } from "../../state";
 import { AuthService } from "./AuthService";
 import Logo from '../../UI/Logo/Logo';
+import LoginInput from "../../UI/Input/LoginInput";
 
 const Login = () => {
     const [login, setLogin] = useState("");
@@ -30,7 +31,7 @@ const Login = () => {
                 <div className={styles.header}>
                     <b>Вход</b>
                 </div>
-                <Input
+                <LoginInput
                     label="Логин"
                     type="text"
                     data={login}

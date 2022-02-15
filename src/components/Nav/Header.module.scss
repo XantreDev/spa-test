@@ -1,0 +1,12 @@
+.header{
+    height: 8rem;
+    width: 100%;
+    background-color: #FFF;
+    border: 0 0 0.2rem 0 solid #F1F1F1 ;
+
+    .align {
+        display: flex; 
+        flex-direction: row;
+        justify-content: space-between;    
+    }
+}

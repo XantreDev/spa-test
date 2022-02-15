@@ -11,7 +11,7 @@ const Exit = () => {
 
 
   return (
-    <HeaderButton onClick={() => AuthService.logOut(getExit)} link='/' type='logOut'>Выйти</HeaderButton>
+    <HeaderButton onClick={() => AuthService.logOut(getExit)} link='/' type='logOut' >Выйти</HeaderButton>
   )
 }
 
