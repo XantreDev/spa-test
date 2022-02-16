@@ -1,0 +1,38 @@
+@import './SearchBoxGenerics.scss';
+
+.searchContainer{
+    display: flex;
+    font-size: 2rem;
+
+    & > * { font-size: inherit; }
+
+    .inputContainer{
+        position: relative;
+        flex: 1 1 100%;
+
+        & > * { font-size: inherit; }
+
+        .searchBox{
+            @include input;
+            width: 100%;
+            text-overflow: ellipsis;
+        }
+    
+        .like {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            right: 1.5rem;
+            transform: translateY(-50%); 
+
+            @media screen and (max-width: 500px) {
+                right: 1rem;
+            }
+        }
+    }
+
+    
+    @media screen and (max-width: 600px) {
+        font-size: 1.6rem;
+    }
+}

@@ -3,7 +3,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { AC } from '../../../state'
 import HeaderButton from '../../../UI/HeaderButton/HeaderButton'
-import { AuthService } from '../../Login/AuthService';
+import { AuthService } from '../../../Services/AuthService';
 
 const Exit = () => {
     const dispatch = useDispatch()

@@ -1,5 +1,5 @@
 import md5 from 'md5'
-import data from '../../users.json';
+import data from '../users.json';
 
 const USER_TOKEN_KEY = 'userToken'
 

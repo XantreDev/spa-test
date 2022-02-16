@@ -4,7 +4,6 @@
     @include focus;
     height: 5.2rem;
     padding: 1.4rem 5.4rem 1.4rem 1.5rem;
-    font-size: 2rem;
     color: #272727;
     border: 0.1rem solid rgba($color: #171719, $alpha: .2);
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
@@ -19,5 +18,7 @@
     &:focus {
         outline: none;
     }
+
+    
 
 }

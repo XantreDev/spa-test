@@ -1,10 +1,10 @@
 import React from 'react'
-import styles from './Header.module.scss'
+import styles from './Head.module.scss'
 import Navigation from './Navigation/Navigation';
 import Exit from './Exit/Exit';
 import Container from '../../UI/Container/Container';
 
-const Header = () => {
+const Head = () => {
   return (
     <header className={styles.header}>
         <Container className={styles.align}>
@@ -15,4 +15,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Head

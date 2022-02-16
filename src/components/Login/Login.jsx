@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import logo from "./img/logo.svg";
 import Button from "../../UI/Button/Button";
 import CardWrapper from "../../UI/CardWrapper/CardWrapper";
 import styles from "./Login.module.scss";
@@ -8,7 +7,7 @@ import PasswordInput from "../../UI/Input/PasswordInput";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "@reduxjs/toolkit";
 import { AC } from "../../state";
-import { AuthService } from "./AuthService";
+import { AuthService } from "../../Services/AuthService";
 import Logo from '../../UI/Logo/Logo';
 import LoginInput from "../../UI/Input/LoginInput";
 

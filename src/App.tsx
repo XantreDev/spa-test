@@ -4,7 +4,7 @@ import Login from './components/Login/Login';
 import './App.scss';
 import { useSelector } from 'react-redux';
 import { RootState } from './state/store';
-import Header from './components/Nav/Header';
+import Head from './components/Head/Head';
 import Favorite from './components/Favorite/Favorite';
 import Search from './components/Search/Search';
 import Results from './components/Results/Results';
@@ -29,13 +29,13 @@ function App() {
                 (<Routes>
                     <Route path='/' element={
                         <React.Fragment>
-                            <Header/>
-                            { canShow ? <Results/> : <Search/> }
+                            <Head/>
+                            { !canShow ? <Results/> : <Search/> }
                         </React.Fragment>
                         }/>
                     <Route path={ROUTES.favorite} element={
                         <React.Fragment>
-                            <Header/>
+                            <Head/>
                             <Favorite/>
                         </React.Fragment>
                     }/>

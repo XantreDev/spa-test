@@ -4,7 +4,7 @@ import SearchButton from "../../../UI/Button/SearchButton";
 import useSearch from '../../../hooks/useSearch';
 
 const MainSearchBox = () => {
-    const [searchRequest, setSearchRequest, startSearchRequestBinded] = useSearch()
+    const [searchRequest, setSearchRequest, sendSearchRequest] = useSearch()
     console.log(searchRequest)
     
     return (
@@ -18,7 +18,7 @@ const MainSearchBox = () => {
                 name="search"
                 id="search"
             />
-            <SearchButton onClick={startSearchRequestBinded}>Найти</SearchButton>
+            <SearchButton onClick={sendSearchRequest}>Найти</SearchButton>
         </div>
     );
 };

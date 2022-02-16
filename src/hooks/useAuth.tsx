@@ -2,7 +2,7 @@ import { bindActionCreators } from '@reduxjs/toolkit'
 import React, { useLayoutEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../state/store'
-import { AuthService } from '../components/Login/AuthService';
+import { AuthService } from '../Services/AuthService';
 import { AC } from '../state';
 
 const useAuth = () => {
