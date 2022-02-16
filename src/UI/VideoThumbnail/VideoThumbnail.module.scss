@@ -1,0 +1,41 @@
+@mixin borderSpace {
+    // Треугольник 60 градусов
+    top: 50%;
+    box-sizing: border-box;
+    display: block;
+    content: '';
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    background-color: white;
+    border-radius: 0.1rem;
+    // left: 0;
+    border: #35A2EC solid 0.1rem;
+    // transform: ;
+    // transform: skewX(30deg) skewY(-30deg);
+    // transform: skewX(-30deg) rotate(45deg) translateY(-50%);
+    transform: matrix(0, -1, -1, 0, 0, 0);
+    color: white;
+}
+
+.thumbnail {
+    border: #35A2EC solid 0.1rem;
+    border-radius: 1rem;
+    // im
+    position: relative;
+    // background-position: ;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+
+    &::before{
+        @include borderSpace();
+        left: 0;
+    }
+
+    &::after{
+        @include borderSpace();
+        right: 0;
+    }
+}

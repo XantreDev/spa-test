@@ -1,8 +1,7 @@
 import React from 'react'
 import HeaderButton, { buttonStatusType } from '../../../UI/HeaderButton/HeaderButton'
-import Logo from '../../../UI/Logo/Logo'
 import styles from './Navigation.module.scss'
-import { ROUTES } from '../../../App';
+import { ROUTES } from '../../../MainContent';
 import { useResolvedPath, useLocation } from 'react-router-dom';
 import HeaderLogo from '../../../UI/Logo/HeaderLogo';
 

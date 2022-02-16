@@ -1,8 +1,11 @@
 import React from 'react'
+import styles from './ResultesLineContainer.module.scss'
 
 const ResultsLineContainer: React.FC<{}> = ({children}) => {
   return (
-    <div>{children}</div>
+    <div
+        className={styles.container}
+    >{children}</div>
   )
 }
 

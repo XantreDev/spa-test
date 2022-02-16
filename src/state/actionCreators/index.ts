@@ -1,5 +1,7 @@
+import { resultObject, sortResultsType } from '../../Services/SearchService';
 import { authAction } from '../reducers/authReducer';
-import { searchRequestAction } from '../reducers/searchRequestReducer';
+import { lastSearchStateAction } from '../reducers/lastSearchStateReducer';
+import { searchRequestAction, searchState } from '../reducers/searchStateReducer';
 
 export const getAuth = (userToken: string) => {
     return (dispatch: any) => {
@@ -32,6 +34,16 @@ export const changeSearchRequest = (searchRequest: string ) => {
     }
 }
 
+export const setResultsOrderType = (orderType: sortResultsType) => {
+    return (dispatch: any) => {
+        const action: searchRequestAction = {
+            type: 'setOrderType',
+            payload: orderType
+        }
+        dispatch(action)
+    }
+}
+
 export const startSearchRequest = () => (disptch: any) => {
     const action: searchRequestAction = {
         type: 'searchRequest'
@@ -39,7 +51,7 @@ export const startSearchRequest = () => (disptch: any) => {
     disptch(action)
 }
 
-export const finishSearchRequest = (results: any[]) => (disptch: any) => {
+export const finishSearchRequest = (results: resultObject) => (disptch: any) => {
     const action: searchRequestAction = {
         type: 'searchRequestFinished',
         payload: results
@@ -47,3 +59,12 @@ export const finishSearchRequest = (results: any[]) => (disptch: any) => {
     disptch(action)
 }
 
+
+export const setLastSearchState = (state: searchState) => (dispatch: any) => {
+    const action: lastSearchStateAction = {
+        type: 'setNewState',
+        payload: state
+    }
+
+    dispatch(action)
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import { videoData } from '../../../Services/SearchService'
 import { viewInterface } from '../ResultsGrid/ResultsGrid'
 import { viewType } from '../SearchResults/SearchResults'
 import VideoCardWrapper from './VideoCardWrapper/VideoCardWrapper'
@@ -13,16 +14,37 @@ const containerSwitcher: {[key in viewType]: gridContainerTypes} = {
 }
 
 interface proxyWrapperInterface extends viewInterface {
-    data: cardData
+    data: videoData
 }
 
-export interface cardData{}
-
+export interface cardData extends videoData{
+    viewsCountCaption: string
+}
 
 const VideoWrapper: React.FC<proxyWrapperInterface> = ({type, data}) => {
     const WrapperComponent = containerSwitcher[type]
+    
+    const getCountOfViewsCaption = (count: number) => {
+        let unitsKeyword: viewsUnits = ''
+        type viewsUnits = '' | 'тыс.' | 'млн'
+        if (count > 1_000_000) {
+            count /= 1_000_000
+            unitsKeyword = 'млн'
+        } else if (count > 1_000) {
+            count /= 1_000
+            unitsKeyword = 'тыс.'
+        }
+        count = Math.round(count)
+        const unitSpacing = unitsKeyword !== '' ? ' ' : ''
+
+        return `${count} ${unitsKeyword}${unitSpacing} просмотров`
+
+    }
+
+    const countOfViewsCaption = getCountOfViewsCaption(data.viewsCount)
+
     return (
-        <WrapperComponent {...data}/>
+        <WrapperComponent viewsCountCaption={countOfViewsCaption} {...data}/>
   )
 }
 

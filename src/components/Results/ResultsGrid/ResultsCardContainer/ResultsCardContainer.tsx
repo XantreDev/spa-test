@@ -1,8 +1,9 @@
 import React from 'react'
+import styles from './ResultsCardContainer.module.scss'
 
 const ResultsCardContainer: React.FC<{}> = ({children}) => {
   return (
-    <div>{children}</div>
+    <div className={styles.container}>{children}</div>
   )
 }
 

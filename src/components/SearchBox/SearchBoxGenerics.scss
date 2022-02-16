@@ -18,7 +18,17 @@
     &:focus {
         outline: none;
     }
+}
 
+@mixin fontSizeGeneric {
+    font-size: 2rem;
+
+    & > * { font-size: inherit; }
+    & > * > * {
+        font-size: inherit;
+    }
     
-
+    @media screen and (max-width: 600px) {
+        font-size: 1.6rem;
+    }
 }

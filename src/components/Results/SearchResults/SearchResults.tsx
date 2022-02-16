@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import FilterPanel from '../FilterPanel/FilterPanel';
 import ResultsGrid from '../ResultsGrid/ResultsGrid';
-import ShowSelector from '../ShowSelector/ShowSelector';
 import styles from './SearchResults.module.scss'
 
 export type viewType = 'cards' | 'list'

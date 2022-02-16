@@ -3,6 +3,8 @@
 .searchContainer{
     display: flex;
 
+    @include fontSizeGeneric;
+    
     .searchBox {
         @include input;
         

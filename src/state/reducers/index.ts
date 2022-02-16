@@ -1,10 +1,13 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import authReducer from "./authReducer";
-import searchStateReducer from './searchRequestReducer';
+import searchStateReducer from './searchStateReducer';
+import lastSearchStateReducer from './lastSearchStateReducer';
 
-const reducers =  combineReducers({
+
+const reducers = combineReducers({
     userToken: authReducer,
     searchState: searchStateReducer,
+    lastSearchState: lastSearchStateReducer
 })
 
 export default reducers

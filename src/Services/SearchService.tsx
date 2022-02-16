@@ -2,7 +2,7 @@ import axios from "axios";
 
 export interface videoData{
     title: string,
-    image: string,
+   image: string,
     channelTitle: string,
     viewsCount: number,
     url: string
@@ -10,45 +10,46 @@ export interface videoData{
 
 export interface resultObject{
     totalResults: number,
+    sortedBy: sortResultsType,
     results: videoData[]
 }
 
-export default class searchService{
+export type sortResultsType = 'data' | 'rating' | 'relevance' | 'title' | 'viewCount'
+
+export default class SearchService{
     private static apiKey = 'AIzaSyC3j5_7o6AmAJfHsbZvPW1gHImYEzQ8z_U'
     private static apiUrl = 'https://www.googleapis.com/youtube/v3'
     private static searchUrl = '/search'
     private static videosUrl = '/videos' 
-    private static part = 'snippet'
 
-    static searchParams = {
+    private static searchParams = {
         key: this.apiKey,
         part: 'snippet',
         maxResults: 50,
         type: 'video'
     }
 
-    static getVideoStatisticParams = {
+    private static getVideoStatisticParams = {
         part: 'statistics',
         key: this.apiKey
     }
 
-    static axiosYTInstance = axios.create({
+    private static axiosYTInstance = axios.create({
         baseURL: this.apiUrl,
     })
 
-    static async findVideos(searchRequest: string){
+    static async findVideos(searchRequest: string, sortOrder: sortResultsType = 'relevance'){
         const response = await this.axiosYTInstance({
             url: this.searchUrl,
             params: {
                 ...this.searchParams,
-                q: searchRequest
+                q: searchRequest,
+                order: sortOrder
             }
         })
 
         const allIds = response.data.items.map((item: any) => item.id.videoId)
-        console.log(allIds)
         const videoStatistics = await this.findVideoStatistics(allIds)
-        console.log(videoStatistics)
         const videosData = response.data.items
 
         const results: videoData[] = []
@@ -58,7 +59,7 @@ export default class searchService{
                 title: String(videosData[i].snippet.title),
                 channelTitle: String(videosData[i].snippet.channelTitle),
                 viewsCount: Number(videoStatistics[i].statistics.viewCount),
-                image: String(videosData[i].snippet.thumbnails.default.url),
+                image: String(videosData[i].snippet.thumbnails.high.url),
                 url: `https://youtu.be/${videosData[i].id.videoId}`
             })
         }
@@ -67,7 +68,8 @@ export default class searchService{
 
         const result: resultObject = {
             results,
-            totalResults
+            totalResults,
+            sortedBy: sortOrder 
         }
 
         return result
@@ -88,14 +90,4 @@ export default class searchService{
         return response.data.items
     }
 
-    private static toResultsObject(data: {}){
-
-    } 
 }
-
-// const quokka = 'aboba'
-
-// var data
-// searchService.findVideos('123').then(response => {
-//     console.log(response)
-// })

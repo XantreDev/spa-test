@@ -1,0 +1,12 @@
+@mixin textClamp($lines) {
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    overflow: hidden;
+}
+
+@mixin oneLine{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
