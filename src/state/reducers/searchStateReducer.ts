@@ -2,7 +2,7 @@ import { resultObject, sortResultsType } from "../../Services/SearchService"
 
 export type searchRequestActionType = 'change' | 'searchRequest' | 'searchRequestFinished' | 'setOrderType'
 
-export type searchRequestAction = {type: searchRequestActionType, payload?: string | sortResultsType | resultObject}
+export type searchRequestAction = {type: searchRequestActionType, payload?: string | sortResultsType | resultObject} | ActionsSetSearchState
 
 
 export interface searchState {
@@ -21,6 +21,11 @@ const defaultState: searchState = {
     ordedBy: 'relevance',
     executed: false,
     requiredCount: 12
+}
+
+type ActionsSetSearchState = {
+    type: 'setSearchRequest',
+    payload: searchState
 }
 
 export function isSearchState(data: any): data is searchState{
@@ -60,6 +65,8 @@ const searchStateReducer: (state: searchState | undefined, action: searchRequest
                 executed: true,
                 result: isResultObject(action.payload)  ? action.payload : undefined
             }
+        case 'setSearchRequest':
+            return action.payload
         default:
             return state
     }

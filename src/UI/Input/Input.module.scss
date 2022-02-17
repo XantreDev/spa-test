@@ -22,30 +22,8 @@
     border: 0.1rem solid rgba($color: #171719, $alpha: .2);
     padding: 1.2rem 1.5rem;
     
-    @include focus
+    @include focus();
 
-    &[type="password"] {
-        font-family: 'fontello';
-
-        // font-variant: small-caps;
-        // // font-size: 30px;
-        // letter-spacing: 0.145ch;
-        // // font-variant-numeric: tabular-nums;
-        // color: transparent;
-        // caret-color: #272727;
-    }
-
-    // &[type="password"]::selection{
-    //     color: transparent;
-    // }
 }
 
-.showButton{
-    position: absolute;
-    bottom: 2.4rem;
-    transform: translateY(50%);
-    height: 2.4rem;
-    right: 1.3rem;
-    cursor: pointer;
-}
 

@@ -38,4 +38,12 @@ export default class DataService {
         })
     }
 
+    static updateFavoriteStorage(token: string, favoriteStorage: searchState[]){
+        const previousStorage = this.getStorage(token)
+        this.setStorage(token, {
+            ...previousStorage,
+            favorites: favoriteStorage       
+        })
+    }
+
 }

@@ -11,7 +11,7 @@ const useSyncSearch = () => {
     const lastSearchState = useSelector((state: RootState) => state.lastSearchState)
 
     const dispatch = useDispatch();
-    const { setLastSearchState } = bindActionCreators(
+    const { setLastSearchState, setSearchRequestState } = bindActionCreators(
         AC,
         dispatch
     );
@@ -23,12 +23,14 @@ const useSyncSearch = () => {
         if (!isSearchState(lastSearchState) && isSearchState(data)){
             const datedSearchState: searchState = data
             setLastSearchState(datedSearchState)
+            setSearchRequestState(datedSearchState)
+        
         }
     }, [])
 
     useEffect(() => {
         if (searchState.result !== undefined){
-            setLastSearchState(searchState)
+            setLastSearchState(searchState)        
         }
     }, [searchState.result])
 

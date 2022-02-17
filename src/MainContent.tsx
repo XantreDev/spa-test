@@ -1,37 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import Favorite from "./components/Favorite/Favorite";
-import Head from "./components/Head/Head";
-import Results from "./components/Results/Results";
-import Search from "./components/Search/Search";
-import useSyncSearch from "./hooks/useSyncSearch";
+import FavoritePage from "./FavoritePage";
+import SearchPage from "./SearchPage";
+import DataService from "./Services/DataService";
+import { setFavoriteResults } from "./state/actionCreators";
+import { RootState } from "./state/store";
+import { useSelector } from 'react-redux';
 
 export const ROUTES = { index: "/", search: "/", favorite: "/favorite" };
 
+
 const MainContent = () => {
-    const canShow = useSyncSearch();
+    // useRed
+    const userToken = useSelector((state: RootState) => state.userToken) ?? ''
+
+    useEffect(() => {
+
+        setFavoriteResults(DataService.getStorage(userToken).favorites)
+    }, [])
 
     return (
         <Routes>
             <Route
                 path="/"
-                element={
-                    <React.Fragment>
-                        <Head />
-                        {canShow ? <Results /> : <Search />}
-                    </React.Fragment>
-                }
+                element={<SearchPage/>}
             />
             <Route
                 path={ROUTES.favorite}
                 element={
-                    <React.Fragment>
-                        <Head />
-                        <Favorite />
-                    </React.Fragment>
+                    <FavoritePage/>
                 }
             />
-        </Routes>
+        </Routes>   
     );
 };
 

@@ -1,0 +1,132 @@
+@import './../ModalFieldGenerics.scss';
+
+.field{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem 2rem;
+    height: 6.7rem;
+
+    @media screen and (max-width: 500px) {
+        height: 8rem;
+        gap: 1.5rem 1.5rem;
+    }
+
+    .slider{
+        flex: 1 1 100%;
+        overflow: visible;
+        position: relative;
+
+        input {
+            position: absolute;
+            bottom: 2.1rem;
+            width: 100%;
+            height: 1.8rem;
+            color: #1390E5;
+            // outline: none;
+            // -webkit-appearance: none;
+            // &::-webkit-slider-thumb{ /-webkit-appearance: none;}
+            
+        //     color: #ef233c;
+        //     --thumb-height: 1.8rem;
+        //     --track-height: 0.125em;
+        //     --track-color: rgba(0, 0, 0, 0.2);
+        //     --brightness-hover: 180%;
+        //     --brightness-down: 80%;
+        //     --clip-edges: 0.125em;
+            
+        //     &::-webkit-slider-thumb{
+        //         --thumb-radius: calc((var(--thumb-height) * 0.5) - 1px);
+        //         --clip-top: calc((var(--thumb-height) - var(--track-height)) * 0.5 - 0.5px);
+        //         --clip-bottom: calc(var(--thumb-height) - var(--clip-top));
+        //         --clip-further: calc(100% + 1px);
+        //         --box-fill: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0
+        //             100vmax currentColor;
+
+        //         width: var(--thumb-width, var(--thumb-height));
+        //         background: linear-gradient(currentColor 0 0) scroll no-repeat left center /
+        //             50% calc(var(--track-height) + 1px);
+        //         background-color: currentColor;
+        //         box-shadow: var(--box-fill);
+        //         border-radius: var(--thumb-width, var(--thumb-height));
+
+        //         filter: brightness(100%);
+        //         clip-path: polygon(
+        //             100% -1px,
+        //             var(--clip-edges) -1px,
+        //             0 var(--clip-top),
+        //             -100vmax var(--clip-top),
+        //             -100vmax var(--clip-bottom),
+        //             0 var(--clip-bottom),
+        //             var(--clip-edges) 100%,
+        //             var(--clip-further) var(--clip-further)
+        // );
+            &::-webkit-slider-thumb{
+                -webkit-appearance: none;
+                border: 2px solid #1390E5;
+                height: 1.8rem;
+                width: 1.8rem;
+                border-radius: 50%;
+                background: #ffffff;
+                // margin-top: -.6rem;
+                // background;
+                cursor: pointer;
+            }
+
+            // &::-moz-range-thumb {
+            //     border: 2px solid #1390E5;
+            //     height: 1.8rem;
+            //     width: 1.8rem;
+            //     border-radius: 50%;
+            //     background: #ffffff;
+            //     // background;
+            //     cursor: pointer;
+            //   }
+            
+            // &::-ms-thumb{
+            //     border: 2px solid #1390E5;
+            //     height: 1.8rem;
+            //     width: 1.8rem;
+            //     border-radius: 50%;
+            //     background: #ffffff;
+            //     // background;
+            //     cursor: pointer;
+            // }
+            
+            // &::-webkit-slider-runnable-track {
+            //     -webkit-appearance: none;
+            //     width: 100%;
+            //     height: 0.6rem;
+            //     cursor: pointer;
+            //     // background: linear-gradient(0deg, rgba(19, 144, 229, 0.8), rgba(19, 144, 229, 0.8));
+                
+            //     // background: linear-gradient(rgba(19, 144, 229, 0.8) 0 0) scroll no-repeat left center / 50% calc(var(.6rem) + 1px);
+            //     border-radius: .3rem;
+            //   }
+        }
+
+
+        label{
+            position: absolute;
+            width: max-content;
+            // overflow-wrap: ;
+            display: block;
+            @include fieldLabel();
+        }
+    }
+
+    .counter {
+        min-width: 10rem;
+        // width: 10rem;
+        height: 4.8rem;
+        align-self: flex-end;
+
+        color: #272727;
+        font-size: 2rem;
+        line-height: 2.4rem;
+        text-align: center;
+        padding: 1.1rem 1.5rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(23, 23, 25, 0.2);
+    }
+}

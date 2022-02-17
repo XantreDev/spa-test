@@ -1,0 +1,15 @@
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem 1rem;
+
+    @media screen and (max-width: 500px) {
+        gap: 0.6rem 0.6rem
+    }
+
+    justify-content: space-between;
+
+    & > * {
+        flex: 1 1 100%;
+    }
+}

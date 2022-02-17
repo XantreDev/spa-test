@@ -1,0 +1,10 @@
+@import './../ModalFieldGenerics.scss';
+
+.field{
+    
+    label{
+        @include fieldLabel();
+    }
+
+    
+}

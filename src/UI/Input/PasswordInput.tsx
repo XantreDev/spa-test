@@ -9,7 +9,7 @@ type InputType = 'password' | 'text'
 const PasswordInput: React.FC<{data: string, setter: any, label: string}> = ({data, setter, label}) => {
     const paddingRightForPassword = "4rem";
     const [showPasswordIcon, setShowPasswordIcon] = useState(showPasswordDissabled)
-    const [typeOfInput, setTypeOfInput] = useState('password')
+    const [typeOfInput, setTypeOfInput] = useState<InputType>('password')
 
     const changeType = () =>  {
         if (typeOfInput === 'password'){

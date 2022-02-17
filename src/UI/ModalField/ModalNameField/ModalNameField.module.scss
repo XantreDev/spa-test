@@ -1,0 +1,12 @@
+@import './../ModalFieldGenerics.scss';
+
+.field{
+    
+    span {
+        color: #F00;
+    }
+
+    label{
+        @include fieldLabel();
+    }
+}

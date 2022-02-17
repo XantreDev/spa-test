@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Button from "../../UI/Button/Button";
 import CardWrapper from "../../UI/CardWrapper/CardWrapper";
 import styles from "./Login.module.scss";
-import Input from "../../UI/Input/Input";
 import PasswordInput from "../../UI/Input/PasswordInput";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "@reduxjs/toolkit";

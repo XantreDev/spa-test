@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SearchService from "../Services/SearchService";
 import { AC } from "../state";
 import { RootState } from "../state/store";
+import { searchState } from './../state/reducers/searchStateReducer';
 
 const useSearch = () => {
     const searchState = useSelector((state: RootState) => state.searchState);
@@ -13,11 +14,12 @@ const useSearch = () => {
         bindActionCreators(AC, dispatch);
 
 
-    type returnType = [string, any, any];
+    type returnType = [string, any, any, searchState];
     const returnData: returnType = [
         searchState.searchRequest ?? "",
         changeSearchRequest,
         startSearchRequest,
+        searchState
     ];
 
     useEffect(() => {

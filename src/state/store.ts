@@ -9,3 +9,4 @@ export const store = createStore(
 )
 
 export type RootState = ReturnType<typeof store.getState>
+export type RootDispatch = typeof store.dispatch
