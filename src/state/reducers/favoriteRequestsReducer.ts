@@ -18,7 +18,12 @@ type ActionPushFavoriteRequest = {
     payload: searchState
 }
 
-type ActionsFavoriteRequest = ActionPushFavoriteRequest | ActionSetFavoriteRequests | ActionUpdateFavoriteRequest
+type ActionDeleteFavoriteRequest = {
+    type: 'deleteFavoriteRequest',
+    payload: number
+}
+
+type ActionsFavoriteRequest = ActionPushFavoriteRequest | ActionSetFavoriteRequests | ActionUpdateFavoriteRequest | ActionDeleteFavoriteRequest
 
 const favoriteRequestReducer: (state: searchState[], action: ActionsFavoriteRequest) => searchState[] = (state = [], action) => {
     switch (action.type){
@@ -28,6 +33,8 @@ const favoriteRequestReducer: (state: searchState[], action: ActionsFavoriteRequ
             return [...action.payload]
         case 'updateFavoriteRequest':
             return state.map((state, index) => index !== action.payload.index ? state : action.payload.data)
+        case 'deleteFavoriteRequest':
+            return state.filter((state, index) => index !== action.payload)
         default:
             return state    
     }

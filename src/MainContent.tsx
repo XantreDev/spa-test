@@ -3,21 +3,23 @@ import { Route, Routes } from "react-router-dom";
 import FavoritePage from "./FavoritePage";
 import SearchPage from "./SearchPage";
 import DataService from "./Services/DataService";
-import { setFavoriteResults } from "./state/actionCreators";
 import { RootState } from "./state/store";
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from '@reduxjs/toolkit';
+import { AC } from "./state";
+import { searchState as searchStateType } from './state/reducers/searchStateReducer';
+import useCacheFavorites from "./hooks/useCacheFavorites";
+import useUpdateFavorites from "./hooks/useUpdateFavorites";
 
 export const ROUTES = { index: "/", search: "/", favorite: "/favorite" };
 
 
 const MainContent = () => {
     // useRed
-    const userToken = useSelector((state: RootState) => state.userToken) ?? ''
+    useUpdateFavorites()
 
-    useEffect(() => {
-
-        setFavoriteResults(DataService.getStorage(userToken).favorites)
-    }, [])
+    useCacheFavorites()    
 
     return (
         <Routes>

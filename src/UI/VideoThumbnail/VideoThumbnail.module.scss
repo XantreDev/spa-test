@@ -5,8 +5,8 @@
     display: block;
     content: '';
     position: absolute;
-    width: 2rem;
-    height: 2rem;
+    width: 1rem;
+    height: 1rem;
     background-color: white;
     border-radius: 0.1rem;
     // left: 0;
@@ -14,12 +14,15 @@
     // transform: ;
     // transform: skewX(30deg) skewY(-30deg);
     // transform: skewX(-30deg) rotate(45deg) translateY(-50%);
-    transform: matrix(0, -1, -1, 0, 0, 0);
+    // transform: matrix(0, -1, -1, 0, 0, 0);
     color: white;
 }
 
 .thumbnail {
-    border: #35A2EC solid 0.1rem;
+    $border-color: #35A2EC;
+    $border-size: 2px;
+    --border-size: 1px;
+    border: $border-color solid $border-size;
     border-radius: 1rem;
     // im
     position: relative;
@@ -27,15 +30,78 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    overflow: hidden;
+    overflow: visible;
+    $triangles-color: #E5E5E5;
+    $triangles-width: 8px; 
 
     &::before{
-        @include borderSpace();
-        left: 0;
-    }
+        // @include borderSpace();
+        // left: 0;
+        // transform: rotate(45deg) translateX(-40%) translateY(40%);
+        content: '';
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
 
+        left: -2px;
+        top: calc(50% - 7px / 2);
+        
+        border-width: 7px 0 7px 8px;
+        border-style: solid;
+        border-color: transparent transparent transparent $triangles-color;
+        background-color: transparent;
+
+
+        transform:rotate(360deg);
+        filter: drop-shadow(1px 1px 10px $border-color)
+        drop-shadow(1px 1px 10px $border-color)
+        drop-shadow(1px 1px 10px $border-color)
+        drop-shadow(1px 1px 10px $border-color)
+        drop-shadow(1px 1px 10px $border-color)
+        drop-shadow(1px 1px 10px $border-color)
+        drop-shadow(1px 1px 10px $border-color)
+        drop-shadow(1px 1px 10px $border-color)
+        ;
+        
+        // clip-path: polygon(calc(100% + var(--border-size)) 50%, 0 calc(0px - var(--border-size)), 0 calc(100% + var(--border-size)));
+        clip-path: polygon(calc(100% + 2px) 50%, 0 calc(0px - 2px), 0 calc(100% + 2px));
+    }
+    
     &::after{
-        @include borderSpace();
-        right: 0;
+        // @include borderSpace();
+        // right: 0;
+        // transform: rotate(-45deg) scaleY(1.5);
+        // transform-origin: top left;
+        
+        // -webkit-transform:rotate(360deg);
+        transform:rotate(360deg);
+        display: block;
+        content: '';
+        width: 0;
+        height: 0;
+        right: -2px;
+        position: absolute;
+        // z-index: 1;
+
+        top: calc(50% - 7px / 2);
+        border-width: 7px 8px 7px 0;
+
+        border-style: solid;
+        border-color: transparent $triangles-color transparent transparent;
+    
+        filter: drop-shadow(1px 1px 10px $border-color)
+        drop-shadow(1px 1px 10px $border-color)
+        drop-shadow(1px 1px 10px $border-color)
+        drop-shadow(1px 1px 10px $border-color)
+        drop-shadow(1px 1px 10px $border-color)
+        drop-shadow(1px 1px 10px $border-color)
+        drop-shadow(1px 1px 10px $border-color)
+        drop-shadow(1px 1px 10px $border-color)
+        ;
+
+        // clip-path: polygon(100% calc(0px - var(--border-size)), calc(0px - var(--border-size)) 50%, 100% calc(100% + var(--border-size)));
+        clip-path: polygon(100% -2px, -2px 50%, 100% calc(100% + 2px));
+
     }
 }

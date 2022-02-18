@@ -14,7 +14,7 @@ export interface resultObject{
     results: videoData[]
 }
 
-export type sortResultsType = 'data' | 'rating' | 'relevance' | 'title' | 'viewCount'
+export type sortResultsType = 'data' | 'rating' | 'relevance' | 'title' | 'viewCount' | 'null'
 
 export default class SearchService{
     private static apiKey = 'AIzaSyC3j5_7o6AmAJfHsbZvPW1gHImYEzQ8z_U'
@@ -38,13 +38,13 @@ export default class SearchService{
         baseURL: this.apiUrl,
     })
 
-    static async findVideos(searchRequest: string, sortOrder: sortResultsType = 'relevance'){
+    static async findVideos(searchRequest: string, sortOrder: sortResultsType = 'null'){
         const response = await this.axiosYTInstance({
             url: this.searchUrl,
             params: {
                 ...this.searchParams,
                 q: searchRequest,
-                order: sortOrder
+                order: sortOrder === 'null' ? 'relevance' : sortOrder
             }
         })
 

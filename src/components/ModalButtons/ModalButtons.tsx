@@ -7,28 +7,33 @@ import { bindActionCreators } from '@reduxjs/toolkit';
 import { AC } from '../../state';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
-import { searchState } from './../../state/reducers/searchStateReducer';
+import { searchState as searchStateType } from './../../state/reducers/searchStateReducer';
 
 const ModalButtons: React.FC<{typeOfModal: modalType}> = ({typeOfModal}) => {
     const submitButtonCaption = typeOfModal === 'push' ? 'Сохранить' : "Изменить"
     const discardButtonCaption = typeOfModal === 'push' ? 'Не сохранять' : 'Не изменять'
 
-    const afterEditRequest = useSelector((state: RootState) => (state.modalState.editableResult as searchState))
-    const lastSearchRequest = useSelector((state: RootState) => (state.lastSearchState as searchState))
+    const afterEditRequest = useSelector((state: RootState) => (state.modalState.editableResult as searchStateType))
+    const lastSearchRequest = useSelector((state: RootState) => (state.lastSearchState as searchStateType))
+    const index = useSelector((state: RootState) => (state.modalState.action.kind === 'replace' ? state.modalState.action.index : 0))
+    const favoritesLenght = useSelector((state: RootState) => (state.favoriteResults as searchStateType[]).length)
 
     const dispatch = useDispatch()
-    const { killModal, pushFavoriteResult } = bindActionCreators(AC, dispatch)
+    const { killModal, pushFavoriteResult, updateFavoriteResult, setLike } = bindActionCreators(AC, dispatch)
 
     const changeCallback = () => {
+        updateFavoriteResult(afterEditRequest, index)
+        killModal()
     }
     const pushCallback = () => {
-        const favRequest: searchState = (lastSearchRequest.ordedBy === afterEditRequest.ordedBy) ? ({
+        const favRequest: searchStateType = (lastSearchRequest.ordedBy === afterEditRequest.ordedBy) ? ({
             ...afterEditRequest,
             executed: true,
             needToSearch: false,
             result: lastSearchRequest.result
         }) : ({ ...afterEditRequest })
         pushFavoriteResult(favRequest)
+        setLike(favoritesLenght)
         killModal()
     }
 

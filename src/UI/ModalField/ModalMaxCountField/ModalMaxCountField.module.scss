@@ -1,5 +1,49 @@
 @import './../ModalFieldGenerics.scss';
 
+
+@mixin insaneFilter {
+    $target-color: #1390E5;
+    $radius: 2px;
+    filter: brightness(1000000%) grayscale(1) 
+                    // drop-shadow(0px $offset 0 $target-color)
+                    // drop-shadow($offset 0px 0 $target-color)
+                    // drop-shadow(0px -$offset 0 $target-color)
+                    // drop-shadow(-$offset 0px 0 $target-color)
+                    
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    drop-shadow(0px 0px $radius $target-color)
+                    
+                    ;
+}
+
 .field{
     display: flex;
     flex-direction: row;
@@ -22,7 +66,13 @@
             bottom: 2.1rem;
             width: 100%;
             height: 1.8rem;
-            color: #1390E5;
+            color: rgb(19, 144, 229);
+
+            filter: opacity(0.8) grayscale(15%) brightness(125%);
+            // -webkit-appearance: none;
+            // &::-webkit-slider-thumb{
+            //     background-color: white !important;
+            // }
             // outline: none;
             // -webkit-appearance: none;
             // &::-webkit-slider-thumb{ /-webkit-appearance: none;}
@@ -62,26 +112,50 @@
         //             var(--clip-further) var(--clip-further)
         // );
             &::-webkit-slider-thumb{
-                -webkit-appearance: none;
-                border: 2px solid #1390E5;
-                height: 1.8rem;
-                width: 1.8rem;
-                border-radius: 50%;
-                background: #ffffff;
+                // -webkit-appearance: none;
+                border: 2px solid #1390E5 !important; 
+                height: 1.8rem !important;
+                width: 1.8rem !important;
+                border-radius: 50% !important;
+                background: #ffffff !important;
                 // margin-top: -.6rem;
                 // background;
                 cursor: pointer;
+                // filter: opacity(0);
+                // transform: ;
+                // mask-composite: circle(25% at 50% 50%);
+                // clip-path: circle(25% at 50% 50%);
+                
+
+                @include insaneFilter();
+                
+                clip-path: circle(calc(50% + 2px) at 50% 50%);
+                // outline: 1px solid black;
+                // transform: translate(100px);
+                // outline: 1px ;
             }
 
-            // &::-moz-range-thumb {
-            //     border: 2px solid #1390E5;
-            //     height: 1.8rem;
-            //     width: 1.8rem;
-            //     border-radius: 50%;
-            //     background: #ffffff;
-            //     // background;
-            //     cursor: pointer;
-            //   }
+            // &::-webkit-slider-runnable-track{
+            //     background-color: #1390E5;
+            //     border-radius: .3rem;
+            //     height: .6rem;
+            //     // -webkit-appearance: none;
+            //     // filter: hue-rotate(10deg);
+            //     // filter: invert(64%) sepia(70%) saturate(5147%) hue-rotate(178deg) brightness(93%) contrast(93%);
+
+
+            // }
+
+            &::-moz-range-thumb {
+                @include insaneFilter();
+                // border: 2px solid #1390E5;
+                // height: 1.8rem;
+                // width: 1.8rem;
+                // border-radius: 50%;
+                // background: #ffffff;
+                // // background;
+                // cursor: pointer;
+              }
             
             // &::-ms-thumb{
             //     border: 2px solid #1390E5;

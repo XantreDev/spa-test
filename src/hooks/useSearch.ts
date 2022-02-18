@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SearchService from "../Services/SearchService";
 import { AC } from "../state";
 import { RootState } from "../state/store";
-import { searchState } from './../state/reducers/searchStateReducer';
+import { searchState } from '../state/reducers/searchStateReducer';
 
 const useSearch = () => {
     const searchState = useSelector((state: RootState) => state.searchState);
@@ -24,7 +24,7 @@ const useSearch = () => {
 
     useEffect(() => {
         if (searchState.needToSearch === true) {
-            SearchService.findVideos(searchState.searchRequest)
+            SearchService.findVideos(searchState.searchRequest, searchState.ordedBy)
                 .then((result) => {
                     finishSearchRequest(result);
                 })

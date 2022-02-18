@@ -110,6 +110,15 @@ export const pushFavoriteResult = (state: searchState) => (dispatch: RootDispatc
     })
 }
 
+export const deleteFavoriteResult = (index: number) => (dispatch: RootDispatch) => {
+    dispatch({
+        type: 'deleteFavoriteRequest',
+        payload: index
+    })
+}
+
+
+
 export const createModal = (kind: SModalAction, toEdit: searchState) => (dispatch: RootDispatch) => {
     dispatch({
         type: 'createModal',
@@ -130,5 +139,32 @@ export const modalEdit = (state: searchState) => (dispatch: RootDispatch) => {
     dispatch({
         type: 'changeSModal',
         payload: state
+    })
+}
+
+
+//  likeState
+
+export const activateLike = (index: number) => (dispatch: RootDispatch) => {
+    dispatch({
+        type: 'activateLike',
+        payload: {
+            index
+        }
+    })
+}
+
+export const setLike = (index: number) => (dispatch: RootDispatch) => {
+    dispatch({
+        type: 'setLike',
+        payload: {
+            index
+        }
+    })
+}
+
+export const disableLike = () => (dispatch: RootDispatch) => {
+    dispatch({
+        type: 'disableLike'
     })
 }

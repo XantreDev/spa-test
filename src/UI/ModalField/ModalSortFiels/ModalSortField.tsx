@@ -13,17 +13,19 @@ type option = {
 
 const ModalSortField = () => {
     const editableResult = (useSelector((state: RootState) => state.modalState.editableResult) as searchState) 
-    const sortState: sortResultsType = editableResult?.ordedBy ?? 'relevance'
+    console.log(editableResult)
+    const sortState: sortResultsType = editableResult?.ordedBy ?? 'null'
     const dispatch = useDispatch()
     const { modalEdit } = bindActionCreators(AC, dispatch)
 
     const setSortState = (order: sortResultsType | null) => {
         modalEdit({
             ...editableResult,
-            ordedBy: order ?? 'relevance'
+            ordedBy: order ?? 'null'
         })
     }
     const options: option = {
+        null: 'Без сортировки',
         data: "Дате",
         rating: "Рейтингу",
         relevance: "Релевантности",
@@ -40,17 +42,19 @@ const ModalSortField = () => {
             <br />
             <select
                 onChange={(event) =>
-                    setSortState(event.target.value as sortResultsType | null)
+                    setSortState(event.target.value as sortResultsType)
                 }
-                value={sortState ?? ""}
-                name=""
+                value={sortState}
+                name={sortState}
                 id=""
             >
-                <option value="" disabled selected hidden>
+                {/* <option value="" disabled selected hidden>
                     Без сортировки
-                </option>
+                </option> */}
                 {optionsArray.map((key) => (
-                    <option value={key}>{options[key]}</option>
+                    // key !== 'null' ?
+                    <option style={key === 'null' ? {color: "rgba($color: #171719, $alpha: .3)"}: {}} key={key} value={key}>{options[key]}</option>
+                    // : ''
                 ))}
             </select>
         </div>

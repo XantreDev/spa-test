@@ -12,14 +12,31 @@
         line-height: 2.4rem;
         font-family: Roboto, Arial, Helvetica, sans-serif;
         font-size: 2rem;
-        color: rgba($color: #171719, $alpha: .3);
-        
+        background-color: white;
         appearance: none;
         background-image: url(./images/Vector.svg);
         background-repeat: no-repeat;
         background-position: calc(100% - 2rem) 50%;
         outline: none;
         // @include focus;
+
+        option{
+            color: rgba(39, 39, 39, 1);
+        }
+
+        option[value=null]{
+            user-select: none;
+            
+            
+            color: rgba($color: #171719, $alpha: .3);
+            
+        }
+        // place
+    }
+    
+    select[name=null]{
+        
+        color: rgba($color: #171719, $alpha: .3);
     }
 
     
