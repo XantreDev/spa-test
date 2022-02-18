@@ -1,4 +1,4 @@
-@import './InputGenerics.module.scss';
+@import './../../constants/constants.scss';
 
 @font-face {
     font-family: 'fontello';
@@ -24,6 +24,9 @@
     
     @include focus();
 
+    &[disabled]{
+        color:#D1D1D1;
+    }
 }
 
 

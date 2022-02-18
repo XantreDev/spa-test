@@ -1,16 +1,6 @@
-import { searchState } from "./searchStateReducer"
+import { MAction, SModal } from "../../types/stateTypes"
 
-export type SModal = {
-    modalExist: boolean,
-    editableResult: searchState | null,
-    action: SModalAction
-}
-
-
-
-export type SModalAction = { kind: 'push' } | { kind: 'replace', index: number }
-
-const defaultModalState:SModal = {
+const defaultModalState: SModal = {
     modalExist: false,
     editableResult: null,
     action: {
@@ -18,42 +8,14 @@ const defaultModalState:SModal = {
     }
 }
 
-type ActionSModalEdit = {
-    type: 'changeSModal',
-    payload: searchState
-}
-
-type ActionSModalCreate = {
-    type: 'createModal',
-    payload: {
-        action: SModalAction,
-        toEdit: searchState
-    }
-} 
-
-type ActionModalKill = {
-    type: 'killModal'
-}
-
-export type ActionSModal = ActionSModalEdit | ActionSModalCreate | ActionModalKill
-
-// const isNeedToSearchAgain = (state: SModal, action: ActionSModal) => {
-//     if (action.type === 'createModal') return action.payload.action.kind === 'replace'
-//     // else if (action.type === 'changeSModal'){
-//     //     return !(state.editableResult.)
-//     // }
-//     return false
-// }
-
-const modalReducer = (state: SModal = defaultModalState, action: ActionSModal): SModal =>{
+const modalReducer = (state: SModal = defaultModalState, action: MAction): SModal =>{
     switch (action.type) {
-        case 'changeSModal':
+        case "modal/edit":
             return {
                 ...state,
                 editableResult: action.payload
             }
-        case 'createModal':
-            // const needToSearchAgain = action.payload.action.kind === 'replace' 
+        case "modal/create":
             return {
                 modalExist: true,
                 action: action.payload.action,
@@ -62,12 +24,9 @@ const modalReducer = (state: SModal = defaultModalState, action: ActionSModal): 
                     result: undefined,
                     needToSearch: true,
                     executed: false
-                    // result:  needToSearchAgain ? undefined : action.payload.toEdit.result,
-                    // needToSearch: needToSearchAgain ? true : action.payload.toEdit.needToSearch,
-                    // executed: needToSearchAgain ? false : action.payload.toEdit.executed,
                 }
             }
-        case 'killModal':
+        case 'modal/kill':
             return {
                 ...state,
                 modalExist: false

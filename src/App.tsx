@@ -4,9 +4,14 @@ import Login from './components/Login/Login';
 import './App.scss';
 import useAuth from './hooks/useAuth';
 import MainContent from './MainContent';
+import { useEffect } from 'react';
 
 
 function App() {
+    useEffect(() => {
+        document.title = 'SPA Test'
+    }, [])
+
     const needToLogin = useAuth()
 
 

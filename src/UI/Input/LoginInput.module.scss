@@ -1,14 +1,11 @@
+@import './../../constants/constants.scss';
+
 .loginInput{
     position: relative;
-    width: 33.4rem;
-
-    @media screen and (max-width: 500px) {
-        width: 93.4%;
-    }
+    @include loginFieldsWeight();
     // overflow: hidden;
     label {
-        font-size: 1.6rem;
-        font-weight: 400;
+        @include inputLabel();
         color: rgba($color: #171719, $alpha: .3);
     }
 }

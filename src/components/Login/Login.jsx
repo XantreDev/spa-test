@@ -23,7 +23,7 @@ const Login = () => {
 
     return (
         <div>
-            <CardWrapper gap="2rem" paddingBottom="6rem" paddingTop="4rem">
+            <CardWrapper gap="2rem" paddingBottom="5.9rem" paddingTop="3.9rem">
                 <Logo/>
 
                 <div className={styles.header}>
@@ -46,6 +46,7 @@ const Login = () => {
                     color="blue"
                     textWidth={"13.6rem"}
                     onClick={tryProcess}
+                    customClass={styles.button}
                 >
                     Войти
                 </Button>

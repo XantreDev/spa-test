@@ -3,9 +3,8 @@ import { viewType } from '../SearchResults/SearchResults'
 import ResultsCardContainer from './ResultsCardContainer/ResultsCardContainer';
 import ResultsLineContainer from './ResultesLineContainer/ResultsLineContainer';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../state/store';
 import VideoWrapper from '../VideoWrapper/VideoWrapper';
-import { searchState } from './../../../state/reducers/searchStateReducer';
+import { RootState, SearchState } from '../../../types/stateTypes';
 
 type gridContainerTypes = typeof ResultsCardContainer | typeof ResultsLineContainer
 
@@ -21,7 +20,7 @@ export interface viewInterface{
 const ResultsGrid: React.FC<viewInterface> = ({type}) => {
     const GridContainer = containerSwitcher[type]
 
-    const lastStorage: searchState = useSelector((state: RootState) => state.lastSearchState)
+    const lastStorage: SearchState = useSelector((state: RootState) => state.lastSearchState)
     const needCount = lastStorage.requiredCount
     const results = lastStorage?.result?.results
     const showableResults = results?.filter((data, index) => index < (needCount ?? 12))

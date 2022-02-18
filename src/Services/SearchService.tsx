@@ -1,20 +1,5 @@
 import axios from "axios";
-
-export interface videoData{
-    title: string,
-   image: string,
-    channelTitle: string,
-    viewsCount: number,
-    url: string
-}
-
-export interface resultObject{
-    totalResults: number,
-    sortedBy: sortResultsType,
-    results: videoData[]
-}
-
-export type sortResultsType = 'data' | 'rating' | 'relevance' | 'title' | 'viewCount' | 'null'
+import { SortType, VideoData, ResultObject } from "../types/stateTypes";
 
 export default class SearchService{
     private static apiKey = 'AIzaSyC3j5_7o6AmAJfHsbZvPW1gHImYEzQ8z_U'
@@ -38,7 +23,7 @@ export default class SearchService{
         baseURL: this.apiUrl,
     })
 
-    static async findVideos(searchRequest: string, sortOrder: sortResultsType = 'null'){
+    static async findVideos(searchRequest: string, sortOrder: SortType = 'null'){
         const response = await this.axiosYTInstance({
             url: this.searchUrl,
             params: {
@@ -52,7 +37,7 @@ export default class SearchService{
         const videoStatistics = await this.findVideoStatistics(allIds)
         const videosData = response.data.items
 
-        const results: videoData[] = []
+        const results: VideoData[] = []
 
         for (let i = 0; i < videosData.length; i++){
             results.push({
@@ -66,7 +51,7 @@ export default class SearchService{
 
         const totalResults = Number(response.data.pageInfo.totalResults)
 
-        const result: resultObject = {
+        const result: ResultObject = {
             results,
             totalResults,
             sortedBy: sortOrder 

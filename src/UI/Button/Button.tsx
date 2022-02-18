@@ -34,7 +34,7 @@ const Button: React.FC<{
         ? { borderTopLeftRadius: "0", borderBottomLeftRadius: "0" }
         : {};
 
-    const buttonClass = customClass ?? styles.button
+    const buttonClass = customClass + ' ' + styles.button
     const divStyle: CSSProperties = textWidth ? {width: textWidth} : {} 
 
     return (

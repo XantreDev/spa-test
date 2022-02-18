@@ -5,7 +5,7 @@ import useSearch from '../../../hooks/useSearch';
 
 const MainSearchBox = () => {
     const [searchRequest, setSearchRequest, sendSearchRequest] = useSearch()
-    console.log(searchRequest)
+    // console.log(searchRequest)
     
     return (
         <div className={styles.searchContainer}>

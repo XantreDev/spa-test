@@ -6,27 +6,27 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import { AC } from '../../state';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../state/store';
-import { searchState as searchStateType } from './../../state/reducers/searchStateReducer';
+import { RootState, SearchState as SearchStateType } from '../../types/stateTypes';
+
 
 const ModalButtons: React.FC<{typeOfModal: modalType}> = ({typeOfModal}) => {
     const submitButtonCaption = typeOfModal === 'push' ? 'Сохранить' : "Изменить"
     const discardButtonCaption = typeOfModal === 'push' ? 'Не сохранять' : 'Не изменять'
 
-    const afterEditRequest = useSelector((state: RootState) => (state.modalState.editableResult as searchStateType))
-    const lastSearchRequest = useSelector((state: RootState) => (state.lastSearchState as searchStateType))
+    const afterEditRequest = useSelector((state: RootState) => (state.modalState.editableResult as SearchStateType))
+    const lastSearchRequest = useSelector((state: RootState) => (state.lastSearchState as SearchStateType))
     const index = useSelector((state: RootState) => (state.modalState.action.kind === 'replace' ? state.modalState.action.index : 0))
-    const favoritesLenght = useSelector((state: RootState) => (state.favoriteResults as searchStateType[]).length)
+    const favoritesLenght = useSelector((state: RootState) => (state.favoriteResults as SearchStateType[]).length)
 
     const dispatch = useDispatch()
-    const { killModal, pushFavoriteResult, updateFavoriteResult, setLike } = bindActionCreators(AC, dispatch)
+    const { killModal, pushFavoriteRequest: pushFavoriteResult, updateFavoriteRequest: updateFavoriteResult, setLike } = bindActionCreators(AC, dispatch)
 
     const changeCallback = () => {
         updateFavoriteResult(afterEditRequest, index)
         killModal()
     }
     const pushCallback = () => {
-        const favRequest: searchStateType = (lastSearchRequest.ordedBy === afterEditRequest.ordedBy) ? ({
+        const favRequest: SearchStateType = (lastSearchRequest.ordedBy === afterEditRequest.ordedBy) ? ({
             ...afterEditRequest,
             executed: true,
             needToSearch: false,

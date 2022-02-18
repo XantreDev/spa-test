@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import styles from "./ModalWindow.module.scss";
 import CardWrapper from "./../../UI/CardWrapper/CardWrapper";
-import Input from "../../UI/Input/Input";
-import Button from "../../UI/Button/Button";
-import { sortResultsType } from "../../Services/SearchService";
+import { RootState, SortType } from "../../types/stateTypes";
 import ModalButtons from "../ModalButtons/ModalButtons";
 import ModalRequestField from "../../UI/ModalField/ModalRequestField/ModalRequestField";
 import ModalNameField from "../../UI/ModalField/ModalNameField/ModalNameField";
 import ModalSortField from "../../UI/ModalField/ModalSortFiels/ModalSortField";
 import ModalMaxCountField from "../../UI/ModalField/ModalMaxCountField/ModalMaxCountField";
 import { useSelector } from 'react-redux';
-import { RootState } from "../../state/store";
-import { SModalAction } from "../../state/reducers/modalReducer";
 
 export type modalType = "push" | "replace";
 

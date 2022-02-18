@@ -3,4 +3,6 @@
 .button {
     @include button;
     font-size: 2rem;
+    line-height: 2.4rem;
+    text-align: center;
 }

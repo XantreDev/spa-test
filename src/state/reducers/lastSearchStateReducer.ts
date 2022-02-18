@@ -1,18 +1,12 @@
-import { searchState } from "./searchStateReducer";
+import { LSAction, SearchState } from "../../types/stateTypes";
 
-export type lastSearchStateType = "setNewState";
-
-export type lastSearchStateAction = {
-    type: lastSearchStateType;
-    payload: searchState;
-};
 
 const lastSearchStateReducer: (
-    state: searchState | null,
-    action: lastSearchStateAction
-) => searchState | null = (state = null, action) => {
+    state: SearchState | null,
+    action: LSAction
+) => SearchState | null = (state = null, action) => {
     switch (action.type){
-        case 'setNewState':
+        case 'last-search/set':
             return action.payload
         default:
             return state

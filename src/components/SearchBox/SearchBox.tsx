@@ -8,46 +8,37 @@ import { bindActionCreators } from '@reduxjs/toolkit';
 import { AC } from '../../state';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { RootState } from '../../state/store';
-import { searchState as searchStateType } from '../../state/reducers/searchStateReducer';
-import { likeStateType } from '../../state/reducers/likeReducer';
 import LikePopUp from '../LikePopUp/LikePopUp';
+import { likeStateType, RootState, SearchState } from '../../types/stateTypes';
+import { isStateResultWiilBeSame } from '../../utils/utils';
 
 const SearchBox = () => {
     const [searchRequest, setSearchRequest, sendSearchRequest, state] = useSearch()
     const dispatch = useDispatch()
-    const { createModal, deleteFavoriteResult, disableLike } = bindActionCreators(AC, dispatch)
+    const { createModal, removeFavoriteRequest, disableLike } = bindActionCreators(AC, dispatch)
     
+    const favorites: SearchState[] = useSelector((state: RootState) => state.favoriteResults)
+
     const likeState: likeStateType = useSelector((state: RootState) => state.likeState)
     const [active, rightNowSetted] = [likeState.active, likeState.rightNowSetted]
-
-    // const favorites = useSelector((state: RootState) => (state.favoriteResults as searchStateType[]))
-    
-    // const [likeStatus, likePopUpStatus] = useMemo(() => {
-    //     if (state.executed === false) return [false, false]
-
-    // }, [state.executed, favorites])
-
-    // useMemo(() => {
-    //     //     if (state.executed === false) return [false, false]
-    
-    //     // }, [state.executed, favorites])
-
-    // useEffect(() => {
-    //     if (likeStatus === true) {
-
-    //     }
-    // }, [state])
 
     const clickAction = useCallback(() => {
         if (!active) {
             createModal({kind: 'push'}, state)
         }
         if (active) {
-            deleteFavoriteResult(likeState.index)
+            removeFavoriteRequest(likeState.index)
             disableLike()
         }
     }, [active])
+
+    useEffect(() => {
+        if (active && !isStateResultWiilBeSame(state)(favorites[likeState.index]) ){
+            disableLike()
+        }
+    }, [state])
+
+    // useEffect(() => () => {disableLike()}, [])
 
 
     return (
@@ -62,12 +53,13 @@ const SearchBox = () => {
                     name="search"
                     id="search"
                 />
-                {/* TODO: ADD ONCLICK CALLBACK */}
-                <Like onClick={clickAction} active={active} className={styles.like}/>
-                {
-                    rightNowSetted ? <LikePopUp/> : ""
-                }
-            </div>
+                <div className={styles.likeWrapper}>
+                    <Like onClick={clickAction} active={active} className={styles.like}/>
+                    {
+                        rightNowSetted ? <LikePopUp/> : ""
+                    }
+                    </div>
+                </div>
             <SearchButton onClick={sendSearchRequest}>Найти</SearchButton>
         </div>
   )

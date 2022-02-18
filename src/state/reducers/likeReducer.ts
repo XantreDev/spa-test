@@ -1,44 +1,20 @@
-export type likeStateType = {
-    active: boolean,
-    index: number,
-    rightNowSetted: boolean
-}
-
-interface LActionActivate {
-    type: 'activateLike',
-    payload: {
-        index: number
-    }
-}
-
-interface LActionSet {
-    type: 'setLike',
-    payload: {
-        index: number
-    }
-}
-
-interface LActionDisable{
-    type: 'disableLike',
-}
-
-type LikeActions = LActionActivate | LActionSet | LActionDisable
+import { LikeActions, likeStateType } from "../../types/stateTypes"
 
 const initialLikeState: likeStateType = {active: false, index: 0, rightNowSetted: false}
 
 const likeReducer = (state: likeStateType = initialLikeState, action: LikeActions): likeStateType => {
     switch (action.type){
-        case 'activateLike':
+        case 'like/activate':
             return ({
                 active: true,
                 index: action.payload.index,
                 rightNowSetted: false
             })
-        case 'disableLike':
+        case "like/disable":
             return ({
                 ...initialLikeState
             })
-        case 'setLike':
+        case "like/set":
             return ({
                 active: true,
                 index: action.payload.index,

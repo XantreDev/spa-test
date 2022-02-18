@@ -1,24 +1,23 @@
 import { bindActionCreators } from "@reduxjs/toolkit";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { sortResultsType } from "../../../Services/SearchService";
+import { RootState, SortType } from "../../../types/stateTypes";
 import { AC } from "../../../state";
-import { searchState } from "../../../state/reducers/searchStateReducer";
-import { RootState } from "../../../state/store";
+import { SearchState } from "../../../types/stateTypes";
 import styles from './ModalSortField.module.scss'
 
 type option = {
-    [key in sortResultsType]: string
+    [key in SortType]: string
 }
 
 const ModalSortField = () => {
-    const editableResult = (useSelector((state: RootState) => state.modalState.editableResult) as searchState) 
-    console.log(editableResult)
-    const sortState: sortResultsType = editableResult?.ordedBy ?? 'null'
+    const editableResult = (useSelector((state: RootState) => state.modalState.editableResult) as SearchState) 
+    // console.log(editableResult)
+    const sortState: SortType = editableResult?.ordedBy ?? 'null'
     const dispatch = useDispatch()
     const { modalEdit } = bindActionCreators(AC, dispatch)
 
-    const setSortState = (order: sortResultsType | null) => {
+    const setSortState = (order: SortType | null) => {
         modalEdit({
             ...editableResult,
             ordedBy: order ?? 'null'
@@ -34,7 +33,7 @@ const ModalSortField = () => {
     }
 
 
-    const optionsArray: sortResultsType[] = Object.keys(options).map(key => key as sortResultsType)
+    const optionsArray: SortType[] = Object.keys(options).map(key => key as SortType)
 
     return (
         <div className={styles.field}>
@@ -42,7 +41,7 @@ const ModalSortField = () => {
             <br />
             <select
                 onChange={(event) =>
-                    setSortState(event.target.value as sortResultsType)
+                    setSortState(event.target.value as SortType)
                 }
                 value={sortState}
                 name={sortState}

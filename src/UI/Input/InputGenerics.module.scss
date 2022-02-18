@@ -1,8 +1,0 @@
-@mixin focus{
-    transition: background-color 100ms ease-in-out;
-
-    &:focus {
-        background-color: rgba($color: #C5E4F9, $alpha: .3);
-        outline: none;
-        border-color: #1390E5;
-    }}

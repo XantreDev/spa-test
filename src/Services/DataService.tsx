@@ -1,11 +1,8 @@
-import {
-    isSearchState,
-    searchState,
-} from "../state/reducers/searchStateReducer";
+import { SearchState } from "../types/stateTypes";
 
 type userStorage = {
-    lastRequest?: searchState;
-    favorites: searchState[];
+    lastRequest?: SearchState;
+    favorites: SearchState[];
 };
 
 // function isUserStorage(data: any): data is userStorage {
@@ -30,7 +27,7 @@ export default class DataService {
         localStorage.setItem(token, JSON.stringify(storage))
     }
 
-    static updateLastRequestStorage(token: string, lastRequest: searchState){
+    static updateLastRequestStorage(token: string, lastRequest: SearchState){
         const previousStorage = this.getStorage(token)
         this.setStorage(token, {
             ...previousStorage,
@@ -38,7 +35,7 @@ export default class DataService {
         })
     }
 
-    static updateFavoriteStorage(token: string, favoriteStorage: searchState[]){
+    static updateFavoriteStorage(token: string, favoriteStorage: SearchState[]){
         const previousStorage = this.getStorage(token)
         this.setStorage(token, {
             ...previousStorage,

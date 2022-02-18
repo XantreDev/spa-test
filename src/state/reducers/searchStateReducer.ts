@@ -1,29 +1,7 @@
-import { resultObject, sortResultsType } from "../../Services/SearchService";
+import { ResultObject, SortType } from "../../types/stateTypes";
+import { SRAction, SearchState } from "../../types/stateTypes";
 
-export type searchRequestActionType =
-    | "change"
-    | "searchRequest"
-    | "searchRequestFinished"
-    | "setOrderType";
-
-export type searchRequestAction =
-    | {
-          type: searchRequestActionType;
-          payload?: string | sortResultsType | resultObject;
-      }
-    | ActionsSetSearchState;
-
-export interface searchState {
-    searchRequest: string;
-    needToSearch: boolean;
-    executed: boolean;
-    ordedBy: sortResultsType;
-    searchName?: string | undefined;
-    requiredCount: number;
-    result?: resultObject;
-}
-
-const defaultState: searchState = {
+export const defaultState: SearchState = {
     searchRequest: "",
     needToSearch: false,
     ordedBy: "null",
@@ -31,61 +9,36 @@ const defaultState: searchState = {
     requiredCount: 12,
 };
 
-type ActionsSetSearchState = {
-    type: "setSearchRequest";
-    payload: searchState;
-};
-
-export function isSearchState(data: any): data is searchState {
-    return (
-        isResultObject((data as searchState)?.result) &&
-        (data as searchState).searchRequest !== undefined
-    );
-}
-
-function isResultObject(data: any): data is resultObject {
-    return (data as resultObject)?.totalResults !== undefined;
-}
-
-function isOrderType(data: any): data is sortResultsType {
-    return (data as sortResultsType) !== undefined && typeof data === "string";
-}
-
 const searchStateReducer: (
-    state: searchState | undefined,
-    action: searchRequestAction
-) => searchState = (state = defaultState, action) => {
+    state: SearchState | undefined,
+    action: SRAction
+) => SearchState = (state = defaultState, action) => {
     switch (action.type) {
-        case "change":
+        case "request/changed":
             return {
                 ...state,
                 ...defaultState,
-                searchRequest:
-                    typeof action.payload === "string" ? action.payload : "",
+                searchRequest: action.payload,
                 needToSearch: false,
             };
-        case "searchRequest":
+        case "request/started":
             return {
                 ...state,
                 needToSearch: true,
             };
-        case "setOrderType":
+        case "request/order-setted":
             return {
                 ...state,
-                ordedBy: isOrderType(action.payload)
-                    ? action.payload
-                    : "null",
+                ordedBy: action.payload
             };
-        case "searchRequestFinished":
+        case "request/finished":
             return {
                 ...state,
                 needToSearch: false,
                 executed: true,
-                result: isResultObject(action.payload)
-                    ? action.payload
-                    : undefined,
+                result: action.payload,
             };
-        case "setSearchRequest":
+        case "request/set-new-state":
             return action.payload;
         default:
             return state;

@@ -2,16 +2,15 @@ import { bindActionCreators } from '@reduxjs/toolkit';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { AC } from '../state';
-import { RootState } from '../state/store';
 import { indexInFavorites, isInFavorites, isInFavoritesAndHaveResult } from '../utils/utils';
-import { searchState as searchStateType } from './../state/reducers/searchStateReducer';
+import { RootState, SearchState as searchStateType } from './../types/stateTypes';
 
 const useCacheFavorites = () => {
     const favorites: searchStateType[] = useSelector((state: RootState) => state.favoriteResults)
 
     const dispatch = useDispatch()
 
-    const {updateFavoriteResult } = bindActionCreators(AC, dispatch)
+    const {updateFavoriteRequest: updateFavoriteResult } = bindActionCreators(AC, dispatch)
 
     const searchState: searchStateType = useSelector((state: RootState) => state.searchState)
     const lastSearchState: searchStateType = useSelector((state: RootState) => state.lastSearchState)

@@ -1,13 +1,10 @@
-export interface authAction {
-    type: 'auth' | 'exit',
-    payload?: string
-}
+import { AAction } from "../../types/stateTypes"
 
-const authReducer = (state: string = '', action: authAction) => {
+const authReducer = (state: string = '', action: AAction) => {
     switch (action.type) {
-        case 'auth':
+        case 'auth/enter':
             return action.payload
-        case 'exit':
+        case 'auth/exit':
             return ''
         default:
             return state

@@ -3,8 +3,9 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import DataService from '../Services/DataService';
 import { AC } from '../state';
-import { isSearchState, searchState } from '../state/reducers/searchStateReducer';
-import { RootState } from '../state/store';
+import { RootState, SearchState } from '../types/stateTypes';
+
+const isSearchState = (state: any) => (state ?? false) && (state.searchRequest ?? false) 
 
 const useSyncSearch = () => {
     const searchState = useSelector((state: RootState) => state.searchState);
@@ -21,7 +22,7 @@ const useSyncSearch = () => {
     useEffect(() => {
         const data = DataService.getStorage(userToken).lastRequest
         if (!isSearchState(lastSearchState) && isSearchState(data)){
-            const datedSearchState: searchState = data
+            const datedSearchState: SearchState = (data as SearchState)
             setLastSearchState(datedSearchState)
             setSearchRequestState(datedSearchState)
         

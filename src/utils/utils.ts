@@ -1,4 +1,4 @@
-import { searchState as searchStateType } from './../state/reducers/searchStateReducer';
+import { SearchState as searchStateType } from './../types/stateTypes';
 
 export const isStateResultWiilBeSame = (state: searchStateType) => (favoriteState: searchStateType) => favoriteState.ordedBy === state.ordedBy && favoriteState.searchRequest === state.searchRequest
 
@@ -10,3 +10,5 @@ export const isInFavoritesAndHaveResult = (favorites: searchStateType[], state: 
 export const indexInFavorites = (favorites: searchStateType[], 
     state: searchStateType) => favorites
         .findIndex(isStateResultWiilBeSame(state))
+
+        

@@ -1,5 +1,5 @@
 import React from 'react'
-import { videoData } from '../../../Services/SearchService'
+import { VideoData } from "../../../types/stateTypes"
 import { viewInterface } from '../ResultsGrid/ResultsGrid'
 import { viewType } from '../SearchResults/SearchResults'
 import VideoCardWrapper from './VideoCardWrapper/VideoCardWrapper'
@@ -14,10 +14,10 @@ const containerSwitcher: {[key in viewType]: gridContainerTypes} = {
 }
 
 interface proxyWrapperInterface extends viewInterface {
-    data: videoData
+    data: VideoData
 }
 
-export interface cardData extends videoData{
+export interface cardData extends VideoData{
     viewsCountCaption: string
 }
 

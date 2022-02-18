@@ -1,8 +1,9 @@
 import React from 'react'
 
-const Logo: React.FC<{size: string, className?: string}> = ({size = '8.8rem', className=''}) => {
+const Logo: React.FC<{size: string, className?: string, onClick?: () => void}> = ({size = '8.8rem', className='', onClick}) => {
   return (
     <svg
+      onClick={onClick}
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}

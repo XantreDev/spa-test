@@ -1,9 +1,9 @@
 import { bindActionCreators } from '@reduxjs/toolkit'
 import { useLayoutEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../state/store'
 import { AuthService } from '../Services/AuthService';
 import { AC } from '../state';
+import { RootState } from '../types/stateTypes';
 
 const useAuth = () => {
     const userToken = useSelector((state: RootState) => state.userToken)

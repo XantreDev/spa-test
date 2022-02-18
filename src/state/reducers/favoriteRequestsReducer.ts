@@ -1,39 +1,14 @@
-import { searchState } from "./searchStateReducer";
+import { FRAction, SearchState } from "../../types/stateTypes"
 
-type ActionSetFavoriteRequests = {
-    type: 'setFavoriteRequests',
-    payload: searchState[]
-}
-
-type ActionUpdateFavoriteRequest = {
-    type: 'updateFavoriteRequest',
-    payload: {
-        index: number,
-        data: searchState
-    }
-}
-
-type ActionPushFavoriteRequest = {
-    type: 'pushFavoriteRequest',
-    payload: searchState
-}
-
-type ActionDeleteFavoriteRequest = {
-    type: 'deleteFavoriteRequest',
-    payload: number
-}
-
-type ActionsFavoriteRequest = ActionPushFavoriteRequest | ActionSetFavoriteRequests | ActionUpdateFavoriteRequest | ActionDeleteFavoriteRequest
-
-const favoriteRequestReducer: (state: searchState[], action: ActionsFavoriteRequest) => searchState[] = (state = [], action) => {
+const favoriteRequestReducer: (state: SearchState[], action: FRAction) => SearchState[] = (state = [], action) => {
     switch (action.type){
-        case 'pushFavoriteRequest':
+        case 'favorite-requests/push':
             return [...state, action.payload]
-        case 'setFavoriteRequests':
+        case 'favorite-requests/set-all':
             return [...action.payload]
-        case 'updateFavoriteRequest':
+        case 'favorite-requests/update':
             return state.map((state, index) => index !== action.payload.index ? state : action.payload.data)
-        case 'deleteFavoriteRequest':
+        case 'favorite-requests/remove':
             return state.filter((state, index) => index !== action.payload)
         default:
             return state    

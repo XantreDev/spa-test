@@ -5,12 +5,11 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import { AC } from '../../../state';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../state/store';
-import { searchState } from './../../../state/reducers/searchStateReducer';
 import { modalType } from '../../../components/ModalWindow/ModalWindow';
+import { RootState, SearchState } from '../../../types/stateTypes';
 
 const ModalRequestField: React.FC<{typeOfModal: modalType}> = ({typeOfModal: typeOfModel}) => {
-    const editableResult = (useSelector((state: RootState) => state.modalState.editableResult) as searchState) 
+    const editableResult = (useSelector((state: RootState) => state.modalState.editableResult) as SearchState) 
     const searchRequest = editableResult?.searchRequest ?? ''
     const dispatch = useDispatch()
     const { modalEdit } = bindActionCreators(AC, dispatch)
