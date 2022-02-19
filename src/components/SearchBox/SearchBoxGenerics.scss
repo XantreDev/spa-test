@@ -1,18 +1,16 @@
-@import './../../constants/constants.scss';
+@import "./../../constants/constants.scss";
 
 @mixin input {
     @include focus;
     height: 5.2rem;
     padding: 1.4rem 5.4rem 1.4rem 1.5rem;
     color: #272727;
-    border: 0.1rem solid rgba($color: #171719, $alpha: .2);
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    border: 0.1rem solid rgba($color: #171719, $alpha: 0.2);
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
     border-radius: 1rem 0 0 1rem;
 
-    
-
-    &::placeholder{
-        color: rgba($color: #272727, $alpha: .3);
+    &::placeholder {
+        color: rgba($color: #272727, $alpha: 0.3);
     }
 
     &:focus {
@@ -23,11 +21,13 @@
 @mixin fontSizeGeneric {
     font-size: 2rem;
 
-    & > * { font-size: inherit; }
+    & > * {
+        font-size: inherit;
+    }
     & > * > * {
         font-size: inherit;
     }
-    
+
     @media screen and (max-width: 600px) {
         font-size: 1.6rem;
     }

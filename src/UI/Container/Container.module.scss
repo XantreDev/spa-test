@@ -1,8 +1,7 @@
-
 .container {
     margin: 0 auto;
     padding: 0 0.8rem;
- 
+
     width: calc(1040 / 1440 * 100%);
 
     @media screen and (max-width: 800px) {
@@ -10,6 +9,6 @@
     }
 
     @media screen and (max-width: 500px) {
-        width: 100%; 
+        width: 100%;
     }
 }

@@ -1,20 +1,23 @@
-import { MAction, SModal } from "../../types/stateTypes"
+import { MAction, SModal } from "../../types/stateTypes";
 
 const defaultModalState: SModal = {
     modalExist: false,
     editableResult: null,
     action: {
-        kind: 'push'
-    }
-}
+        kind: "push",
+    },
+};
 
-const modalReducer = (state: SModal = defaultModalState, action: MAction): SModal =>{
+const modalReducer = (
+    state: SModal = defaultModalState,
+    action: MAction
+): SModal => {
     switch (action.type) {
         case "modal/edit":
             return {
                 ...state,
-                editableResult: action.payload
-            }
+                editableResult: action.payload,
+            };
         case "modal/create":
             return {
                 modalExist: true,
@@ -23,17 +26,17 @@ const modalReducer = (state: SModal = defaultModalState, action: MAction): SModa
                     ...action.payload.toEdit,
                     result: undefined,
                     needToSearch: true,
-                    executed: false
-                }
-            }
-        case 'modal/kill':
+                    executed: false,
+                },
+            };
+        case "modal/kill":
             return {
                 ...state,
-                modalExist: false
-            }
+                modalExist: false,
+            };
         default:
-            return state
+            return state;
     }
-}
+};
 
-export default modalReducer
+export default modalReducer;

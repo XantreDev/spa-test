@@ -1,28 +1,35 @@
-import { LikeActions, likeStateType } from "../../types/stateTypes"
+import { LikeActions, likeStateType } from "../../types/stateTypes";
 
-const initialLikeState: likeStateType = {active: false, index: 0, rightNowSetted: false}
+const initialLikeState: likeStateType = {
+    active: false,
+    index: 0,
+    rightNowSetted: false,
+};
 
-const likeReducer = (state: likeStateType = initialLikeState, action: LikeActions): likeStateType => {
-    switch (action.type){
-        case 'like/activate':
-            return ({
+const likeReducer = (
+    state: likeStateType = initialLikeState,
+    action: LikeActions
+): likeStateType => {
+    switch (action.type) {
+        case "like/activate":
+            return {
                 active: true,
                 index: action.payload.index,
-                rightNowSetted: false
-            })
+                rightNowSetted: false,
+            };
         case "like/disable":
-            return ({
-                ...initialLikeState
-            })
+            return {
+                ...initialLikeState,
+            };
         case "like/set":
-            return ({
+            return {
                 active: true,
                 index: action.payload.index,
-                rightNowSetted: true
-            })
+                rightNowSetted: true,
+            };
         default:
-            return state
+            return state;
     }
-}
+};
 
-export default likeReducer 
+export default likeReducer;

@@ -1,12 +1,12 @@
-@import './../../constants/constants.scss';
+@import "./../../constants/constants.scss";
 
 @font-face {
-    font-family: 'fontello';
-    src: url('./font/fontello.eot?0000#iefix') format('embedded-opentype'),
-	     url('./font/fontello.woff2?0000') format('woff2'),
-	     url('./font/fontello.woff?0000') format('woff'),
-	     url('./font/fontello.ttf?0000') format('truetype'),
-	     url('./font/fontello.svg?0000#fontello') format('svg');
+    font-family: "fontello";
+    src: url("./font/fontello.eot?0000#iefix") format("embedded-opentype"),
+        url("./font/fontello.woff2?0000") format("woff2"),
+        url("./font/fontello.woff?0000") format("woff"),
+        url("./font/fontello.ttf?0000") format("truetype"),
+        url("./font/fontello.svg?0000#fontello") format("svg");
     font-weight: 400;
     font-style: 400;
 }
@@ -19,14 +19,12 @@
     font-weight: 400;
     color: #272727;
     border-radius: 1rem;
-    border: 0.1rem solid rgba($color: #171719, $alpha: .2);
+    border: 0.1rem solid rgba($color: #171719, $alpha: 0.2);
     padding: 1.2rem 1.5rem;
-    
+
     @include focus();
 
-    &[disabled]{
-        color:#D1D1D1;
+    &[disabled] {
+        color: #d1d1d1;
     }
 }
-
-

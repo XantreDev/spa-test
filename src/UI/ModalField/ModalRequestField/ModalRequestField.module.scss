@@ -1,10 +1,7 @@
-@import './../ModalFieldGenerics.scss';
+@import "./../ModalFieldGenerics.scss";
 
-.field{
-    
-    label{
+.field {
+    label {
         @include fieldLabel();
     }
-
-    
 }

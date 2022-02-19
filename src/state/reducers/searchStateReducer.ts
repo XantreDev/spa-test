@@ -29,7 +29,7 @@ const searchStateReducer: (
         case "request/order-setted":
             return {
                 ...state,
-                ordedBy: action.payload
+                ordedBy: action.payload,
             };
         case "request/finished":
             return {

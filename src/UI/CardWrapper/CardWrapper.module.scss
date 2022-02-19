@@ -1,15 +1,15 @@
-.card{
+.card {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px solid rgba($color: #272727, $alpha: .1);
+    border: 1px solid rgba($color: #272727, $alpha: 0.1);
     display: flex;
     flex-direction: column;
     width: 51rem;
     border-radius: 1rem;
     overflow: hidden;
-    background-color: #FFF;
+    background-color: #fff;
     align-items: center;
 
     @media screen and (max-width: 530px) {

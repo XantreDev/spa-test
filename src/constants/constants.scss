@@ -1,21 +1,20 @@
-@mixin focus{
+@mixin focus {
     transition: background-color 100ms ease-in-out;
 
     &:focus {
-        background-color: rgba($color: #C5E4F9, $alpha: .3);
+        background-color: rgba($color: #c5e4f9, $alpha: 0.3);
         outline: none;
-        border-color: #1390E5;
-    }}
+        border-color: #1390e5;
+    }
+}
 
 @mixin inputLabel() {
-    
     font-size: 1.6rem;
     line-height: 2.2rem;
     font-weight: 400;
 }
 
 @mixin loginFieldsWeight {
-    
     width: 33.4rem;
 
     @media screen and (max-width: 500px) {

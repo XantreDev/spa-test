@@ -1,4 +1,4 @@
-.popUp{
+.popUp {
     cursor: default;
     font-family: "PT Sans", Verdana, Geneva, Tahoma, sans-serif;
 
@@ -25,21 +25,20 @@
     // box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.15);
     filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.15));
 
-    .caption{
+    .caption {
         color: rgba(39, 39, 39, 1);
     }
-    .link{
+    .link {
         display: block;
         color: rgba(19, 144, 229, 1);
         text-decoration: none;
     }
 
     &::before {
-        
         top: -7px;
         left: calc(50% - 6.5px);
         position: absolute;
-        content: '';
+        content: "";
         width: 0;
         height: 0;
         border-style: solid;

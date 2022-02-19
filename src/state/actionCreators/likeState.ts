@@ -1,28 +1,27 @@
-
 //  likeState
 
 import { RootDispatch } from "../../types/stateTypes";
 
 export const activateLike = (index: number) => (dispatch: RootDispatch) => {
     dispatch({
-        type: 'like/activate',
+        type: "like/activate",
         payload: {
-            index
-        }
+            index,
+        },
     });
 };
 
 export const setLike = (index: number) => (dispatch: RootDispatch) => {
     dispatch({
-        type: 'like/set',
+        type: "like/set",
         payload: {
-            index
-        }
+            index,
+        },
     });
 };
 
 export const disableLike = () => (dispatch: RootDispatch) => {
     dispatch({
-        type: 'like/disable'
+        type: "like/disable",
     });
 };

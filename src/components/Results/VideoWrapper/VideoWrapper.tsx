@@ -1,51 +1,49 @@
-import React from 'react'
-import { VideoData } from "../../../types/stateTypes"
-import { viewInterface } from '../ResultsGrid/ResultsGrid'
-import { viewType } from '../SearchResults/SearchResults'
-import VideoCardWrapper from './VideoCardWrapper/VideoCardWrapper'
-import VideoLineWrapper from './VideoLineWrapper/VideoLineWrapper'
+import React from "react";
+import { VideoData } from "../../../types/stateTypes";
+import { viewInterface } from "../ResultsGrid/ResultsGrid";
+import { viewType } from "../SearchResults/SearchResults";
+import VideoCardWrapper from "./VideoCardWrapper/VideoCardWrapper";
+import VideoLineWrapper from "./VideoLineWrapper/VideoLineWrapper";
 
+type gridContainerTypes = typeof VideoCardWrapper | typeof VideoLineWrapper;
 
-type gridContainerTypes = typeof VideoCardWrapper | typeof VideoLineWrapper
-
-const containerSwitcher: {[key in viewType]: gridContainerTypes} = {
-    'cards': VideoCardWrapper,
-    'list': VideoLineWrapper
-}
+const containerSwitcher: { [key in viewType]: gridContainerTypes } = {
+    cards: VideoCardWrapper,
+    list: VideoLineWrapper,
+};
 
 interface proxyWrapperInterface extends viewInterface {
-    data: VideoData
+    data: VideoData;
 }
 
-export interface cardData extends VideoData{
-    viewsCountCaption: string
+export interface cardData extends VideoData {
+    viewsCountCaption: string;
 }
 
-const VideoWrapper: React.FC<proxyWrapperInterface> = ({type, data}) => {
-    const WrapperComponent = containerSwitcher[type]
-    
+const VideoWrapper: React.FC<proxyWrapperInterface> = ({ type, data }) => {
+    const WrapperComponent = containerSwitcher[type];
+
     const getCountOfViewsCaption = (count: number) => {
-        let unitsKeyword: viewsUnits = ''
-        type viewsUnits = '' | 'тыс.' | 'млн'
+        let unitsKeyword: viewsUnits = "";
+        type viewsUnits = "" | "тыс." | "млн";
         if (count > 1_000_000) {
-            count /= 1_000_000
-            unitsKeyword = 'млн'
+            count /= 1_000_000;
+            unitsKeyword = "млн";
         } else if (count > 1_000) {
-            count /= 1_000
-            unitsKeyword = 'тыс.'
+            count /= 1_000;
+            unitsKeyword = "тыс.";
         }
-        count = Math.round(count)
-        const unitSpacing = unitsKeyword !== '' ? ' ' : ''
+        count = Math.round(count);
+        const unitSpacing = unitsKeyword !== "" ? " " : "";
 
-        return `${count} ${unitsKeyword}${unitSpacing} просмотров`
+        return `${count} ${unitsKeyword}${unitSpacing} просмотров`;
+    };
 
-    }
-
-    const countOfViewsCaption = getCountOfViewsCaption(data.viewsCount)
+    const countOfViewsCaption = getCountOfViewsCaption(data.viewsCount);
 
     return (
-        <WrapperComponent viewsCountCaption={countOfViewsCaption} {...data}/>
-  )
-}
+        <WrapperComponent viewsCountCaption={countOfViewsCaption} {...data} />
+    );
+};
 
-export default VideoWrapper
+export default VideoWrapper;

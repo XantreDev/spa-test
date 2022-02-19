@@ -3,14 +3,14 @@
     top: 50%;
     box-sizing: border-box;
     display: block;
-    content: '';
+    content: "";
     position: absolute;
     width: 1rem;
     height: 1rem;
     background-color: white;
     border-radius: 0.1rem;
     // left: 0;
-    border: #35A2EC solid 0.1rem;
+    border: #35a2ec solid 0.1rem;
     // transform: ;
     // transform: skewX(30deg) skewY(-30deg);
     // transform: skewX(-30deg) rotate(45deg) translateY(-50%);
@@ -19,7 +19,7 @@
 }
 
 .thumbnail {
-    $border-color: #35A2EC;
+    $border-color: #35a2ec;
     $border-size: 2px;
     --border-size: 1px;
     border: $border-color solid $border-size;
@@ -31,14 +31,14 @@
     background-position: center center;
     background-size: cover;
     overflow: visible;
-    $triangles-color: #FAFAFA;
-    $triangles-width: 8px; 
+    $triangles-color: #fafafa;
+    $triangles-width: 8px;
 
-    &::before{
+    &::before {
         // @include borderSpace();
         // left: 0;
         // transform: rotate(45deg) translateX(-40%) translateY(40%);
-        content: '';
+        content: "";
         display: block;
         position: absolute;
         width: 0;
@@ -46,38 +46,40 @@
 
         left: -2px;
         top: calc(50% - 7px / 2);
-        
+
         border-width: 7px 0 7px 8px;
         border-style: solid;
         border-color: transparent transparent transparent $triangles-color;
         background-color: transparent;
 
-
-        transform:rotate(360deg);
+        transform: rotate(360deg);
         filter: drop-shadow(1px 1px 10px $border-color)
-        drop-shadow(1px 1px 10px $border-color)
-        drop-shadow(1px 1px 10px $border-color)
-        drop-shadow(1px 1px 10px $border-color)
-        drop-shadow(1px 1px 10px $border-color)
-        drop-shadow(1px 1px 10px $border-color)
-        drop-shadow(1px 1px 10px $border-color)
-        drop-shadow(1px 1px 10px $border-color)
-        ;
-        
+            drop-shadow(1px 1px 10px $border-color)
+            drop-shadow(1px 1px 10px $border-color)
+            drop-shadow(1px 1px 10px $border-color)
+            drop-shadow(1px 1px 10px $border-color)
+            drop-shadow(1px 1px 10px $border-color)
+            drop-shadow(1px 1px 10px $border-color)
+            drop-shadow(1px 1px 10px $border-color);
+
         // clip-path: polygon(calc(100% + var(--border-size)) 50%, 0 calc(0px - var(--border-size)), 0 calc(100% + var(--border-size)));
-        clip-path: polygon(calc(100% + 2px) 50%, 0 calc(0px - 2px), 0 calc(100% + 2px));
+        clip-path: polygon(
+            calc(100% + 2px) 50%,
+            0 calc(0px - 2px),
+            0 calc(100% + 2px)
+        );
     }
-    
-    &::after{
+
+    &::after {
         // @include borderSpace();
         // right: 0;
         // transform: rotate(-45deg) scaleY(1.5);
         // transform-origin: top left;
-        
+
         // -webkit-transform:rotate(360deg);
-        transform:rotate(360deg);
+        transform: rotate(360deg);
         display: block;
-        content: '';
+        content: "";
         width: 0;
         height: 0;
         right: -2px;
@@ -89,19 +91,17 @@
 
         border-style: solid;
         border-color: transparent $triangles-color transparent transparent;
-    
+
         filter: drop-shadow(1px 1px 10px $border-color)
-        drop-shadow(1px 1px 10px $border-color)
-        drop-shadow(1px 1px 10px $border-color)
-        drop-shadow(1px 1px 10px $border-color)
-        drop-shadow(1px 1px 10px $border-color)
-        drop-shadow(1px 1px 10px $border-color)
-        drop-shadow(1px 1px 10px $border-color)
-        drop-shadow(1px 1px 10px $border-color)
-        ;
+            drop-shadow(1px 1px 10px $border-color)
+            drop-shadow(1px 1px 10px $border-color)
+            drop-shadow(1px 1px 10px $border-color)
+            drop-shadow(1px 1px 10px $border-color)
+            drop-shadow(1px 1px 10px $border-color)
+            drop-shadow(1px 1px 10px $border-color)
+            drop-shadow(1px 1px 10px $border-color);
 
         // clip-path: polygon(100% calc(0px - var(--border-size)), calc(0px - var(--border-size)) 50%, 100% calc(100% + var(--border-size)));
         clip-path: polygon(100% -2px, -2px 50%, 100% calc(100% + 2px));
-
     }
 }

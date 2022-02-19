@@ -1,6 +1,6 @@
-@import './../VideoCardGenerics.scss';
+@import "./../VideoCardGenerics.scss";
 
-.line{
+.line {
     --line-height: 2rem;
     display: grid;
     gap: 2rem;
@@ -10,25 +10,25 @@
     font-size: 1.6rem;
     line-height: var(--line-height);
     color: #000000;
-  
-    .title{
+
+    .title {
         font-weight: 500;
         height: calc(var(--line-height) * 2);
         @include textClamp(2);
     }
 
-    .additionalInfo{
-        color: rgba($color: #171719, $alpha: .3);
+    .additionalInfo {
+        color: rgba($color: #171719, $alpha: 0.3);
 
         & > * {
             @include oneLine;
         }
     }
-    
+
     @media screen and (max-width: 500px) {
         font-size: 1.4rem;
         line-height: 1.6rem;
-        height: 7.2rem ;
+        height: 7.2rem;
         grid-template-columns: 12rem 1fr;
     }
-} 
+}

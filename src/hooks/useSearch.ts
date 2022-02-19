@@ -12,21 +12,22 @@ const useSearch = () => {
     const { changeSearchRequest, startSearchRequest, finishSearchRequest } =
         bindActionCreators(AC, dispatch);
 
-
     type returnType = [string, any, any, SearchState];
     const returnData: returnType = [
         searchState.searchRequest ?? "",
         changeSearchRequest,
         startSearchRequest,
-        searchState
+        searchState,
     ];
 
     useEffect(() => {
         if (searchState.needToSearch === true) {
-            SearchService.findVideos(searchState.searchRequest, searchState.ordedBy)
-                .then((result) => {
-                    finishSearchRequest(result);
-                })
+            SearchService.findVideos(
+                searchState.searchRequest,
+                searchState.ordedBy
+            ).then((result) => {
+                finishSearchRequest(result);
+            });
         }
     }, [searchState.needToSearch]);
 

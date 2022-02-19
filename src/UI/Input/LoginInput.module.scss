@@ -1,11 +1,11 @@
-@import './../../constants/constants.scss';
+@import "./../../constants/constants.scss";
 
-.loginInput{
+.loginInput {
     position: relative;
     @include loginFieldsWeight();
     // overflow: hidden;
     label {
         @include inputLabel();
-        color: rgba($color: #171719, $alpha: .3);
+        color: rgba($color: #171719, $alpha: 0.3);
     }
 }

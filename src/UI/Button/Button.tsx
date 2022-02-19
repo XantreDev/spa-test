@@ -6,22 +6,22 @@ type buttonColorType = "blue" | "white";
 export type callback = () => void;
 
 const Button: React.FC<{
-        children: string;
-        color: buttonColorType;
-        textWidth?: string | null;
-        borderRadius: "0.5rem" | "1rem";
-        onClick: callback;
-        rightSide?: Boolean;
-        customClass?: string | null
-    }> = ({
-        children,
-        color,
-        textWidth = null,
-        borderRadius,
-        onClick,
-        rightSide = false,
-        customClass = null
-    }) => {
+    children: string;
+    color: buttonColorType;
+    textWidth?: string | null;
+    borderRadius: "0.5rem" | "1rem";
+    onClick: callback;
+    rightSide?: Boolean;
+    customClass?: string | null;
+}> = ({
+    children,
+    color,
+    textWidth = null,
+    borderRadius,
+    onClick,
+    rightSide = false,
+    customClass = null,
+}) => {
     const colorTheme: CSSProperties =
         color === "blue"
             ? { backgroundColor: "#1390E5", color: "#FFFFFF" }
@@ -30,8 +30,8 @@ const Button: React.FC<{
         ? { borderTopLeftRadius: "0", borderBottomLeftRadius: "0" }
         : {};
 
-    const buttonClass = customClass + ' ' + styles.button
-    const divStyle: CSSProperties = textWidth ? {width: textWidth} : {} 
+    const buttonClass = customClass + " " + styles.button;
+    const divStyle: CSSProperties = textWidth ? { width: textWidth } : {};
 
     return (
         <button

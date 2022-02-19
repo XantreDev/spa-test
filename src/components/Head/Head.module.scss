@@ -1,13 +1,13 @@
-.header{
+.header {
     height: 8rem;
     width: 100%;
-    background-color: #FFF;
-    border: 0 0 0.2rem 0 solid #F1F1F1 ;
+    background-color: #fff;
+    border: 0 0 0.2rem 0 solid #f1f1f1;
 
     .align {
         height: 100%;
-        display: flex; 
+        display: flex;
         flex-direction: row;
-        justify-content: space-between;    
+        justify-content: space-between;
     }
 }

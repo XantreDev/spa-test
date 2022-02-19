@@ -1,14 +1,14 @@
-import { AAction } from "../../types/stateTypes"
+import { AAction } from "../../types/stateTypes";
 
-const authReducer = (state: string = '', action: AAction) => {
+const authReducer = (state: string = "", action: AAction) => {
     switch (action.type) {
-        case 'auth/enter':
-            return action.payload
-        case 'auth/exit':
-            return ''
+        case "auth/enter":
+            return action.payload;
+        case "auth/exit":
+            return "";
         default:
-            return state
+            return state;
     }
-}
+};
 
-export default authReducer
+export default authReducer;

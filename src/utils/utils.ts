@@ -1,14 +1,21 @@
-import { SearchState as searchStateType } from './../types/stateTypes';
+import { SearchState as searchStateType } from "./../types/stateTypes";
 
-export const isStateResultWiilBeSame = (state: searchStateType) => (favoriteState: searchStateType) => favoriteState.ordedBy === state.ordedBy && favoriteState.searchRequest === state.searchRequest
+export const isStateResultWiilBeSame =
+    (state: searchStateType) => (favoriteState: searchStateType) =>
+        favoriteState.ordedBy === state.ordedBy &&
+        favoriteState.searchRequest === state.searchRequest;
 
-export const isInFavorites = (favorites: searchStateType[], state: searchStateType) => favorites
-    .some(isStateResultWiilBeSame(state))
+export const isInFavorites = (
+    favorites: searchStateType[],
+    state: searchStateType
+) => favorites.some(isStateResultWiilBeSame(state));
 
-export const isInFavoritesAndHaveResult = (favorites: searchStateType[], state: searchStateType) => state.executed && isInFavorites(favorites, state)
+export const isInFavoritesAndHaveResult = (
+    favorites: searchStateType[],
+    state: searchStateType
+) => state.executed && isInFavorites(favorites, state);
 
-export const indexInFavorites = (favorites: searchStateType[], 
-    state: searchStateType) => favorites
-        .findIndex(isStateResultWiilBeSame(state))
-
-        
+export const indexInFavorites = (
+    favorites: searchStateType[],
+    state: searchStateType
+) => favorites.findIndex(isStateResultWiilBeSame(state));

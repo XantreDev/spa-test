@@ -4,27 +4,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState, SortType } from "../../../types/stateTypes";
 import { AC } from "../../../state";
 import { SearchState } from "../../../types/stateTypes";
-import styles from './ModalSortField.module.scss'
+import styles from "./ModalSortField.module.scss";
 import useSortState from "../../../hooks/useSortState";
 
 type option = {
-    [key in SortType]: string
-}
-
+    [key in SortType]: string;
+};
 
 const options: option = {
-    null: 'Без сортировки',
+    null: "Без сортировки",
     data: "Дате",
     rating: "Рейтингу",
     relevance: "Релевантности",
     title: "Названию",
-    viewCount: "Количеству просмотров"
-}
+    viewCount: "Количеству просмотров",
+};
 
 const ModalSortField = () => {
-    const [sortState, setSortState] = useSortState()
+    const [sortState, setSortState] = useSortState();
 
-    const optionsArray: SortType[] = Object.keys(options).map(key => key as SortType)
+    const optionsArray: SortType[] = Object.keys(options).map(
+        (key) => key as SortType
+    );
 
     return (
         <div className={styles.field}>
@@ -39,7 +40,17 @@ const ModalSortField = () => {
                 id=""
             >
                 {optionsArray.map((key) => (
-                    <option style={key === 'null' ? {color: "rgba($color: #171719, $alpha: .3)"}: {}} key={key} value={key}>{options[key]}</option>
+                    <option
+                        style={
+                            key === "null"
+                                ? { color: "rgba($color: #171719, $alpha: .3)" }
+                                : {}
+                        }
+                        key={key}
+                        value={key}
+                    >
+                        {options[key]}
+                    </option>
                 ))}
             </select>
         </div>

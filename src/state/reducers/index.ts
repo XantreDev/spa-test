@@ -1,11 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import authReducer from "./authReducer";
-import searchStateReducer from './searchStateReducer';
-import lastSearchStateReducer from './lastSearchStateReducer';
-import favoriteRequestReducer from './favoriteRequestsReducer';
+import searchStateReducer from "./searchStateReducer";
+import lastSearchStateReducer from "./lastSearchStateReducer";
+import favoriteRequestReducer from "./favoriteRequestsReducer";
 import modalReducer from "./modalReducer";
 import likeReducer from "./likeReducer";
-
 
 const reducers = combineReducers({
     userToken: authReducer,
@@ -13,7 +12,7 @@ const reducers = combineReducers({
     lastSearchState: lastSearchStateReducer,
     favoriteResults: favoriteRequestReducer,
     modalState: modalReducer,
-    likeState: likeReducer
-})
+    likeState: likeReducer,
+});
 
-export default reducers
+export default reducers;

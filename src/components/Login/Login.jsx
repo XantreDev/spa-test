@@ -7,24 +7,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "@reduxjs/toolkit";
 import { AC } from "../../state";
 import { AuthService } from "../../Services/AuthService";
-import Logo from '../../UI/Logo/Logo';
+import Logo from "../../UI/Logo/Logo";
 import LoginInput from "../../UI/Input/LoginInput";
 
 const Login = () => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
-    
-    const dispatch = useDispatch()
-    const { getAuth } = bindActionCreators(AC, dispatch)
 
-    const tryProcess = _ => {
-        AuthService.tryAuth(login, password, getAuth)
-    }
+    const dispatch = useDispatch();
+    const { getAuth } = bindActionCreators(AC, dispatch);
+
+    const tryProcess = (_) => {
+        AuthService.tryAuth(login, password, getAuth);
+    };
 
     return (
         <div>
             <CardWrapper gap="2rem" paddingBottom="5.9rem" paddingTop="3.9rem">
-                <Logo/>
+                <Logo />
 
                 <div className={styles.header}>
                     <b>Вход</b>

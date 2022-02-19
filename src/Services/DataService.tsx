@@ -14,33 +14,37 @@ type userStorage = {
 // }
 
 const defaultStorage: userStorage = {
-    favorites: []
-}
+    favorites: [],
+};
 
 export default class DataService {
-    static getStorage(token: string){
-        const storage: userStorage = JSON.parse(localStorage.getItem(token) ?? JSON.stringify(defaultStorage))
-        return storage
+    static getStorage(token: string) {
+        const storage: userStorage = JSON.parse(
+            localStorage.getItem(token) ?? JSON.stringify(defaultStorage)
+        );
+        return storage;
     }
 
-    static setStorage(token: string, storage: userStorage){
-        localStorage.setItem(token, JSON.stringify(storage))
+    static setStorage(token: string, storage: userStorage) {
+        localStorage.setItem(token, JSON.stringify(storage));
     }
 
-    static updateLastRequestStorage(token: string, lastRequest: SearchState){
-        const previousStorage = this.getStorage(token)
+    static updateLastRequestStorage(token: string, lastRequest: SearchState) {
+        const previousStorage = this.getStorage(token);
         this.setStorage(token, {
             ...previousStorage,
-            lastRequest
-        })
+            lastRequest,
+        });
     }
 
-    static updateFavoriteStorage(token: string, favoriteStorage: SearchState[]){
-        const previousStorage = this.getStorage(token)
+    static updateFavoriteStorage(
+        token: string,
+        favoriteStorage: SearchState[]
+    ) {
+        const previousStorage = this.getStorage(token);
         this.setStorage(token, {
             ...previousStorage,
-            favorites: favoriteStorage       
-        })
+            favorites: favoriteStorage,
+        });
     }
-
 }

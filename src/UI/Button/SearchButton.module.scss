@@ -1,9 +1,8 @@
-@import './ButtonGenerics.scss';
+@import "./ButtonGenerics.scss";
 
 .button {
     @include button;
     // font-size: inherit;
-     
 
     div {
         width: 11rem;
@@ -12,5 +11,4 @@
             width: 5.1rem;
         }
     }
-
 }

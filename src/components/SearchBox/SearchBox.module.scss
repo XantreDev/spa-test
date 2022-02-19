@@ -1,38 +1,34 @@
-@import './SearchBoxGenerics.scss';
+@import "./SearchBoxGenerics.scss";
 
-.searchContainer{
+.searchContainer {
     display: flex;
     @include fontSizeGeneric;
 
-    .inputContainer{
+    .inputContainer {
         position: relative;
         flex: 1 1 100%;
 
         z-index: 1;
         // & > * { font-size: inherit; }
 
-        .searchBox{
+        .searchBox {
             @include input;
             width: 100%;
             text-overflow: ellipsis;
         }
-    
-        .likeWrapper{
 
+        .likeWrapper {
             cursor: pointer;
             position: absolute;
             top: 50%;
             right: 1.5rem;
-            transform: translateY(-50%); 
+            transform: translateY(-50%);
 
             height: 2.4rem;
 
             @media screen and (max-width: 500px) {
                 right: 1rem;
             }
-            
-
+        }
     }
-    }
-
 }

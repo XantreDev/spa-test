@@ -1,10 +1,10 @@
-.fillBackground{
+.fillBackground {
     z-index: 2;
     position: fixed;
     inset: 0;
-    background-color: #75C7FF;
+    background-color: #75c7ff;
 
-    .modalTitle{
+    .modalTitle {
         font-size: 1.8rem;
         font-weight: 500;
         line-height: 2.8rem;
@@ -13,22 +13,20 @@
         margin-bottom: 1.2rem;
     }
 
-    .wrapper{
+    .wrapper {
         padding-left: 0.8rem;
         padding-right: 0.8rem;
         // width: 43rem;
 
         // @media screen and  {
-            
+
         // }
     }
 
-
-    .field{
-
+    .field {
     }
 
-    .modalContentWrapper{
+    .modalContentWrapper {
         display: flex;
         gap: 2.4rem;
         flex-direction: column;
@@ -37,5 +35,4 @@
         width: 43rem;
         max-width: 100%;
     }
-
 }
