@@ -56,7 +56,7 @@ const PasswordInput: React.FC<{ data: string; setter: any; label: string }> = ({
                 onClick={changeType}
                 className={styles.showButton}
                 src={showPasswordIcon}
-                alt=""
+                alt="Иконка: показать пароль"
             />
         </div>
     );

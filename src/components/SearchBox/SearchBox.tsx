@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback } from "react";
 import useSearch from "../../hooks/useSearch";
 import styles from "./SearchBox.module.scss";
 import SearchButton from "../../UI/Button/SearchButton";
@@ -6,7 +6,6 @@ import Like from "../../UI/Like/Like";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "@reduxjs/toolkit";
 import { AC } from "../../state";
-import { useState } from "react";
 import { useEffect } from "react";
 import LikePopUp from "../LikePopUp/LikePopUp";
 import { likeStateType, RootState, SearchState } from "../../types/stateTypes";

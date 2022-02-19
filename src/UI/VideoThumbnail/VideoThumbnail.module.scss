@@ -18,6 +18,20 @@
     color: white;
 }
 
+@mixin insaneFilter($border-color) {
+    
+    filter: 
+    drop-shadow(0px 0px 5px $border-color)
+    drop-shadow(0px 0px 5px $border-color)
+    drop-shadow(0px 0px 5px $border-color)
+    drop-shadow(0px 0px 5px $border-color)
+    drop-shadow(0px 0px 5px $border-color)
+    drop-shadow(0px 0px 5px $border-color)
+    drop-shadow(0px 0px 5px $border-color)
+    drop-shadow(0px 0px 5px $border-color)
+    drop-shadow(0px 0px 5px $border-color);
+}
+
 .thumbnail {
     $border-color: #35a2ec;
     $border-size: 2px;
@@ -33,6 +47,7 @@
     overflow: visible;
     $triangles-color: #fafafa;
     $triangles-width: 8px;
+    $triangles-offset: 3px;
 
     &::before {
         // @include borderSpace();
@@ -44,7 +59,7 @@
         width: 0;
         height: 0;
 
-        left: -2px;
+        left: -$border-size;
         top: calc(50% - 7px / 2);
 
         border-width: 7px 0 7px 8px;
@@ -53,23 +68,18 @@
         background-color: transparent;
 
         transform: rotate(360deg);
-        filter: drop-shadow(1px 1px 10px $border-color)
-            drop-shadow(1px 1px 10px $border-color)
-            drop-shadow(1px 1px 10px $border-color)
-            drop-shadow(1px 1px 10px $border-color)
-            drop-shadow(1px 1px 10px $border-color)
-            drop-shadow(1px 1px 10px $border-color)
-            drop-shadow(1px 1px 10px $border-color)
-            drop-shadow(1px 1px 10px $border-color);
+        @include insaneFilter($border-color: $border-color);
 
         // clip-path: polygon(calc(100% + var(--border-size)) 50%, 0 calc(0px - var(--border-size)), 0 calc(100% + var(--border-size)));
+        
         clip-path: polygon(
-            calc(100% + 2px) 50%,
-            0 calc(0px - 2px),
-            0 calc(100% + 2px)
+            calc(100% + #{$triangles-offset}) 50%,
+            0 calc(0px - #{$triangles-offset}),
+            0 calc(100% + #{$triangles-offset})
         );
-    }
 
+    }
+    
     &::after {
         // @include borderSpace();
         // right: 0;
@@ -82,7 +92,7 @@
         content: "";
         width: 0;
         height: 0;
-        right: -2px;
+        right: -$border-size;
         position: absolute;
         // z-index: 1;
 
@@ -92,16 +102,10 @@
         border-style: solid;
         border-color: transparent $triangles-color transparent transparent;
 
-        filter: drop-shadow(1px 1px 10px $border-color)
-            drop-shadow(1px 1px 10px $border-color)
-            drop-shadow(1px 1px 10px $border-color)
-            drop-shadow(1px 1px 10px $border-color)
-            drop-shadow(1px 1px 10px $border-color)
-            drop-shadow(1px 1px 10px $border-color)
-            drop-shadow(1px 1px 10px $border-color)
-            drop-shadow(1px 1px 10px $border-color);
+        @include insaneFilter($border-color: $border-color);
 
         // clip-path: polygon(100% calc(0px - var(--border-size)), calc(0px - var(--border-size)) 50%, 100% calc(100% + var(--border-size)));
-        clip-path: polygon(100% -2px, -2px 50%, 100% calc(100% + 2px));
+        // clip-path: polygon(100% -#{$triangles-offset}, -#{$triangles-offset} 50%, 100% calc(100% + #{$triangles-offset}));
+        clip-path: polygon(100% -#{$triangles-offset}, -#{$triangles-offset} 50%, 100% calc(100% + #{$triangles-offset}));
     }
 }
