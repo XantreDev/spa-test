@@ -4,8 +4,20 @@
     gap: 1rem 1rem;
 
     @media screen and (max-width: 500px) {
-        gap: 0.6rem 0.6rem
+        gap: 0.6rem 0.6rem;
+
+        .buttonText {
+            padding: .3rem;
+
+            font-size: 1.8rem;
+            line-height: 2.4rem;
+        }
     }
+
+
+    // @media screen {
+        
+    // }
 
     justify-content: space-between;
 

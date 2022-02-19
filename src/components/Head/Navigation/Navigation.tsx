@@ -1,4 +1,3 @@
-import React from 'react'
 import HeadButton, { buttonStatusType } from '../../../UI/HeaderButton/HeaderButton'
 import styles from './Navigation.module.scss'
 import { ROUTES } from '../../../MainContent';
@@ -7,7 +6,6 @@ import HeadLogo from '../../../UI/Logo/HeaderLogo';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import { AC } from '../../../state';
-import { defaultState } from './../../../state/reducers/searchStateReducer';
 
 const Navigation = () => {
     const favoritePath = useResolvedPath(ROUTES.favorite)
@@ -15,11 +13,6 @@ const Navigation = () => {
     const history = useLocation()
     const searchStatus: buttonStatusType = history.pathname === searchPath.pathname ? 'active' : 'inactive'
     const favoriteStatus: buttonStatusType = history.pathname === favoritePath.pathname ? 'active' : 'inactive'
-
-    const navigate = useNavigate()
-
-    const dispatch = useDispatch()
-    const { setLastSearchState, setSearchRequestState } = bindActionCreators(AC, dispatch)
 
     const resetSearch = () => {}
     // const resetSearch = () => {

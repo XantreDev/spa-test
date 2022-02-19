@@ -6,7 +6,7 @@
 
     top: calc(100% + 10px);
     // overflow: visible;
-    transform: translateX(-50%);
+    transform: translateX(calc(-50% + 1.2rem));
     z-index: 10000;
     background-color: white;
     display: flex;
@@ -37,7 +37,7 @@
     &::before {
         
         top: -7px;
-        left: calc(50% + 5px);
+        left: calc(50% - 6.5px);
         position: absolute;
         content: '';
         width: 0;

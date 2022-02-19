@@ -3,10 +3,6 @@ import styles from "./Button.module.scss";
 
 type buttonColorType = "blue" | "white";
 
-// export interface CSSColorTheme extends CSSProperties {
-//     '': string;
-// }
- 
 export type callback = () => void;
 
 const Button: React.FC<{

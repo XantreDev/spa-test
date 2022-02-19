@@ -33,7 +33,7 @@ const SearchBox = () => {
     }, [active])
 
     useEffect(() => {
-        if (active && !isStateResultWiilBeSame(state)(favorites[likeState.index]) ){
+        if (active && (likeState.index >= favorites.length || !isStateResultWiilBeSame(state)(favorites[likeState.index])) ){
             disableLike()
         }
     }, [state])

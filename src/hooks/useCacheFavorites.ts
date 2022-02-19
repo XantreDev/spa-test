@@ -10,7 +10,7 @@ const useCacheFavorites = () => {
 
     const dispatch = useDispatch()
 
-    const {updateFavoriteRequest: updateFavoriteResult } = bindActionCreators(AC, dispatch)
+    const { updateFavoriteRequest } = bindActionCreators(AC, dispatch)
 
     const searchState: searchStateType = useSelector((state: RootState) => state.searchState)
     const lastSearchState: searchStateType = useSelector((state: RootState) => state.lastSearchState)
@@ -19,7 +19,7 @@ const useCacheFavorites = () => {
         const tryCache = (favorites: searchStateType[], state: searchStateType) => {
             if (state.executed && isInFavorites(favorites, state)){
                 const index = indexInFavorites(favorites, state)
-                updateFavoriteResult({
+                updateFavoriteRequest({
                     ...favorites[index],
                     result: state.result
     
@@ -30,11 +30,13 @@ const useCacheFavorites = () => {
 
         let tryResult = false
 
-        if (lastSearchState !== null && isInFavoritesAndHaveResult(favorites, lastSearchState)){
+        console.log(favorites)
+
+        if ((favorites.length ?? 0) > 0 && lastSearchState !== null && isInFavoritesAndHaveResult(favorites, lastSearchState)){
             tryResult = tryCache(favorites, lastSearchState)
         }
 
-        if (!tryResult && searchState !== null && isInFavoritesAndHaveResult(favorites, searchState)){
+        if ((favorites.length ?? 0) > 0 && !tryResult && searchState !== null && isInFavoritesAndHaveResult(favorites, searchState)){
             tryCache(favorites, searchState)
         }
 
